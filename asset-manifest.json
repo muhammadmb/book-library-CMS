@@ -1,25 +1,26 @@
 {
   "files": {
-    "main.css": "/book-library-dashboard/static/css/main.f0c0d30d.chunk.css",
-    "main.js": "/book-library-dashboard/static/js/main.1dce094f.chunk.js",
-    "main.js.map": "/book-library-dashboard/static/js/main.1dce094f.chunk.js.map",
-    "runtime-main.js": "/book-library-dashboard/static/js/runtime-main.811a769c.js",
-    "runtime-main.js.map": "/book-library-dashboard/static/js/runtime-main.811a769c.js.map",
+    "main.css": "/book-library-dashboard/static/css/main.fe7026de.chunk.css",
+    "main.js": "/book-library-dashboard/static/js/main.1699dce4.chunk.js",
+    "main.js.map": "/book-library-dashboard/static/js/main.1699dce4.chunk.js.map",
+    "runtime-main.js": "/book-library-dashboard/static/js/runtime-main.575d4d17.js",
+    "runtime-main.js.map": "/book-library-dashboard/static/js/runtime-main.575d4d17.js.map",
     "static/css/2.62e7949a.chunk.css": "/book-library-dashboard/static/css/2.62e7949a.chunk.css",
-    "static/js/2.504bf408.chunk.js": "/book-library-dashboard/static/js/2.504bf408.chunk.js",
-    "static/js/2.504bf408.chunk.js.map": "/book-library-dashboard/static/js/2.504bf408.chunk.js.map",
-    "static/js/3.37754ec9.chunk.js": "/book-library-dashboard/static/js/3.37754ec9.chunk.js",
-    "static/js/3.37754ec9.chunk.js.map": "/book-library-dashboard/static/js/3.37754ec9.chunk.js.map",
+    "static/js/2.7dbe7a70.chunk.js": "/book-library-dashboard/static/js/2.7dbe7a70.chunk.js",
+    "static/js/2.7dbe7a70.chunk.js.map": "/book-library-dashboard/static/js/2.7dbe7a70.chunk.js.map",
+    "static/js/3.2d55ad2b.chunk.js": "/book-library-dashboard/static/js/3.2d55ad2b.chunk.js",
+    "static/js/3.2d55ad2b.chunk.js.map": "/book-library-dashboard/static/js/3.2d55ad2b.chunk.js.map",
     "index.html": "/book-library-dashboard/index.html",
     "static/css/2.62e7949a.chunk.css.map": "/book-library-dashboard/static/css/2.62e7949a.chunk.css.map",
-    "static/css/main.f0c0d30d.chunk.css.map": "/book-library-dashboard/static/css/main.f0c0d30d.chunk.css.map",
-    "static/js/2.504bf408.chunk.js.LICENSE.txt": "/book-library-dashboard/static/js/2.504bf408.chunk.js.LICENSE.txt"
+    "static/css/main.fe7026de.chunk.css.map": "/book-library-dashboard/static/css/main.fe7026de.chunk.css.map",
+    "static/js/2.7dbe7a70.chunk.js.LICENSE.txt": "/book-library-dashboard/static/js/2.7dbe7a70.chunk.js.LICENSE.txt",
+    "static/media/SignIn.fefb58d2.png": "/book-library-dashboard/static/media/SignIn.fefb58d2.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.811a769c.js",
+    "static/js/runtime-main.575d4d17.js",
     "static/css/2.62e7949a.chunk.css",
-    "static/js/2.504bf408.chunk.js",
-    "static/css/main.f0c0d30d.chunk.css",
-    "static/js/main.1dce094f.chunk.js"
+    "static/js/2.7dbe7a70.chunk.js",
+    "static/css/main.fe7026de.chunk.css",
+    "static/js/main.1699dce4.chunk.js"
   ]
 }
