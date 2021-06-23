@@ -1,0 +1,83 @@
+.card-container{
+    padding: 20px;
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(1, 18, 26, 0.11);
+    border-radius: 12px;
+    box-shadow: 5px 5px 13px #ededed, -5px -5px 13px #fff;
+}
+
+.card-container span{
+    color: rgba(0, 0, 0, 0.603);
+}
+
+.card-container span{
+    width: 20%;
+    text-transform: capitalize;
+}
+
+.card-container span>a{
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.card-container span>a:hover{
+    text-decoration: underline;
+}
+
+.card-btn{
+    padding: 5px;
+    min-width: 12%;
+    cursor: pointer;
+    border-radius: 5px;
+    outline: none;
+    text-transform: uppercase;
+    max-height: 30px;
+    margin: 0 15px;
+}
+
+.card-btn.edit{
+    color: #EEE;
+    background-color: #115384;
+    border: 1px solid #115384;
+}
+
+.card-btn.edit:hover{
+    color: #115384;
+    background-color: transparent;
+}
+
+.card-btn.delete{
+    color: #EEE;
+    background-color: #BA372A;
+    border: 1px solid #BA372A;
+}
+
+.card-btn.delete:hover{
+    color: #BA372A;
+    background-color: transparent;
+}
+
+@media only screen and (max-width: 800px){
+    .card-container{
+        flex-direction: column;
+    }
+
+    .card-container span{
+        margin: 2% 1% 3%;
+        width: 90%;
+    }
+
+    .btn-container{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 4%;
+    }
+
+    .card-btn{
+        margin: 2% 5% 2% 0;
+        width: 30%;
+    }
+
+}

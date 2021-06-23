@@ -6,10 +6,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
     return (
         <div className={sidebarOpen ? "sidebar-responsive" : ""} id="sidebar">
             <div className="sidebar-title">
-                <div className="sidebar-img">
-                    <img src="" alt="" />
-                    <h1>Book Readers</h1>
-                </div>
+                <h1>Book Readers</h1>
                 <i
                     className="fa fa-times"
                     id="sidebarIcon"
@@ -24,6 +21,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
                         className="link"
                         activeClassName="active-menu-link"
                         to="/dashboard"
+                        onClick={() => closeSidebar()}
                     >
                         <i className="fa fa-home"></i>
                         Dashboard
@@ -37,10 +35,11 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
                     <NavLink
                         className="link"
                         activeClassName="active-menu-link"
-                        to="books-managment"
+                        to="books-management"
+                        onClick={() => closeSidebar()}
                     >
                         <i className="fa fa-book"></i>
-                        Books Managment
+                        Books Management
                     </NavLink>
                 </div>
 
@@ -50,6 +49,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
                         className="link"
                         activeClassName="active-menu-link"
                         to="authors-managment"
+                        onClick={() => closeSidebar()}
                     >
                         <i className="fa fa-pencil-square-o"></i>
                         Authors Managment
@@ -61,7 +61,9 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
                     <NavLink
                         className="link"
                         activeClassName="active-menu-link"
-                        to="reviews-managment">
+                        to="reviews-managment"
+                        onClick={() => closeSidebar()}
+                    >
                         <i className="fa fa-comments"></i>
                         Reviews Managment
                     </NavLink>
@@ -75,6 +77,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
                         className="link"
                         activeClassName="active-menu-link"
                         to="/suggestions"
+                        onClick={() => closeSidebar()}
                     >
                         <i className="fa fa-question"></i>
                         Suggestions
@@ -87,6 +90,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
                         className="link"
                         activeClassName="active-menu-link"
                         to="problems"
+                        onClick={() => closeSidebar()}
                     >
                         <i className="fa fa-exclamation-circle"></i>
                         Problems
@@ -99,6 +103,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
                         className="link"
                         activeClassName="active-menu-link"
                         to="/feedback"
+                        onClick={() => closeSidebar()}
                     >
                         <i className="fa fa-commenting"></i>
                         Feedback
@@ -110,6 +115,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
                     <Link
                         className="link"
                         to="/logout "
+                        onClick={() => closeSidebar()}
                     >
                         <i className="fa fa-sign-out"></i>
                         Log Out

@@ -12,7 +12,7 @@ function Navbar({ sidebarOpen, openSidebar }) {
 
             <div className="navbar-left">
                 <NavLink activeClassName="active-link" to="/dashboard">Dashboard</NavLink>
-                <NavLink activeClassName="active-link" to="books-managment">Book Managment</NavLink>
+                <NavLink activeClassName="active-link" to="books-management">Book Management</NavLink>
                 <NavLink activeClassName="active-link" to="suggestions">Suggestions</NavLink>
             </div>
 
