@@ -90,7 +90,7 @@
 @media only screen and (max-width: 978px) {
     #sidebar{
         position: fixed;
-        margin: 0 0 0 -100%;
+        margin: 0 0 0 -105%;
         transition: all 1s ease-in-out;
         width: 90%;
     }

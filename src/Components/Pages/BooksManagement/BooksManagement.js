@@ -7,7 +7,7 @@ const BooksManagement = () => {
         <div className="bm-container">
             <div className="bm-header">
                 <div className="search-area">
-                    <input type="text" placeholder="search" />
+                    <input className="search" type="text" placeholder="search" />
                     <i className="fa fa-search" aria-hidden="true"></i>
                 </div>
 
