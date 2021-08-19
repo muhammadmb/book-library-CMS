@@ -35,7 +35,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
                     <NavLink
                         className="link"
                         activeClassName="active-menu-link"
-                        to="books-management"
+                        to="/books-management"
                         onClick={() => closeSidebar()}
                     >
                         <i className="fa fa-book"></i>
@@ -48,7 +48,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
                     <NavLink
                         className="link"
                         activeClassName="active-menu-link"
-                        to="authors-managment"
+                        to="/authors-managment"
                         onClick={() => closeSidebar()}
                     >
                         <i className="fa fa-pencil-square-o"></i>
@@ -61,7 +61,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
                     <NavLink
                         className="link"
                         activeClassName="active-menu-link"
-                        to="reviews-managment"
+                        to="/reviews-managment"
                         onClick={() => closeSidebar()}
                     >
                         <i className="fa fa-comments"></i>
@@ -89,7 +89,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
                     <NavLink
                         className="link"
                         activeClassName="active-menu-link"
-                        to="problems"
+                        to="/problems"
                         onClick={() => closeSidebar()}
                     >
                         <i className="fa fa-exclamation-circle"></i>

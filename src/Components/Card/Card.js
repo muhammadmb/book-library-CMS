@@ -3,6 +3,7 @@ import DeleteWindow from '../DeleteWindow/DeleteWindow';
 import './CardStyle.css';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
+import { Link } from 'react-router-dom';
 
 const Card = (props) => {
 
@@ -74,8 +75,6 @@ const Card = (props) => {
             </Snackbar>
             <div className={del ? "card-container hide" : "card-container"}>
 
-
-
                 {
                     Open ?
                         <>
@@ -105,11 +104,13 @@ const Card = (props) => {
 
                 <div className="btn-container">
 
-                    <button
-                        className="card-btn edit"
-                    >
-                        <i className="fa fa-pencil" aria-hidden="true"></i> edit
-                    </button>
+                    <Link to={`/books-management/edit-book/genre/${props.genreId}/book/${props.bookId}`}>
+                        <button
+                            className="card-btn edit"
+                        >
+                            <i className="fa fa-pencil" aria-hidden="true"></i> edit
+                        </button>
+                    </Link>
 
                     <button
                         className="card-btn delete"

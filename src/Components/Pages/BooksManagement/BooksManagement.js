@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Card from '../../Card/Card';
 import './BooksManagementStyle.css';
 
@@ -11,7 +12,7 @@ const BooksManagement = () => {
                     <i className="fa fa-search" aria-hidden="true"></i>
                 </div>
 
-                <button className="btn-add">Add +</button>
+                <Link to="/books-management/add"><button className="btn-add">Add +</button></Link>
             </div>
 
             <hr />
