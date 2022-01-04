@@ -6,6 +6,10 @@ import Main from './Components/Main/Main';
 import SignIn from './Components/SignIn/SignIn';
 import BooksManagement from './Components/Pages/BooksManagement/BooksManagement';
 import AddBook from './Components/AddBook/AddBook';
+import AuthorsManagement from './Components/Pages/AuthorsManagement/AuthorsManagement';
+import ReviewsManagement from './Components/Pages/ReviewsManagement/ReviewsManagement';
+import SuggestionsPage from './Components/Pages/SuggestionsPage/SuggestionsPage';
+
 function App() {
 
   return (
@@ -17,6 +21,9 @@ function App() {
           <Route exact path="/books-management" render={() => (<Layout> <BooksManagement /> </Layout>)} />
           <Route path="/books-management/add" render={() => (<Layout> <AddBook header="add a new book" /> </Layout>)} />
           <Route path="/books-management/edit-book/genre/:genreId/book/:bookId" render={() => (<Layout> <AddBook header="edit the book" /> </Layout>)} />
+          <Route path="/authors-management" render={() => <Layout> <AuthorsManagement /> </Layout>} />
+          <Route path="/reviews-management" render={() => <Layout> <ReviewsManagement /> </Layout>} />
+          <Route path="/suggestions" render={() => <Layout> <SuggestionsPage /> </Layout>} />
           <Route path="/sign-in" component={SignIn} />
           <Route path="/book-library-dashboard" component={SignIn} />
         </Switch>
