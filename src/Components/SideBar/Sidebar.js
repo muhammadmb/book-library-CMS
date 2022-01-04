@@ -48,7 +48,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
                     <NavLink
                         className="link"
                         activeClassName="active-menu-link"
-                        to="/authors-managment"
+                        to="/authors-management"
                         onClick={() => closeSidebar()}
                     >
                         <i className="fa fa-pencil-square-o"></i>
@@ -61,11 +61,11 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
                     <NavLink
                         className="link"
                         activeClassName="active-menu-link"
-                        to="/reviews-managment"
+                        to="/reviews-management"
                         onClick={() => closeSidebar()}
                     >
                         <i className="fa fa-comments"></i>
-                        Reviews Managment
+                        Reviews Management
                     </NavLink>
                 </div>
 

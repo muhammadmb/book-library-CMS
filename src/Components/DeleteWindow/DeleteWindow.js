@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import './DeleteWindowStyle.css';
 
-const DeleteWindow = ({ CloseWindow, booktitle, genre, handleClick, handelDelete }) => {
+const DeleteWindow = ({ CloseWindow, cardName, genre, handleClick, handelDelete, email }) => {
 
     const [able, setAble] = useState(false);
 
     const HandelInputChange = (e) => {
-        if (e.target.value.toLowerCase() === `${genre}/${booktitle}`.toLowerCase()) {
+        if (email && e.target.value.toLowerCase() === `${email}`.toLowerCase()) {
+            setAble(true);
+        }
+        else if (e.target.value.toLowerCase() === `${genre}/${cardName}`.toLowerCase()) {
             setAble(true);
         } else {
             setAble(false);
@@ -29,8 +32,8 @@ const DeleteWindow = ({ CloseWindow, booktitle, genre, handleClick, handelDelete
             ></div>
             <div className="delete-confirm">
                 <div>Are you absolutely sure?</div>
-                <p className="window-header"><i className="fa fa-exclamation-triangle" aria-hidden="true"></i> This action cannot be undone. This will permanently delete the {booktitle} book, reviews, comments, and rate.</p>
-                <p className="assurance-message">Please type <span>{genre}/{booktitle}</span> to confirm.</p>
+                <p className="window-header"><i className="fa fa-exclamation-triangle" aria-hidden="true"></i> This action cannot be undone. This will permanently delete the {cardName}</p>
+                <p className="assurance-message">Please type <span>{email ? email : genre`/` + cardName}</span> to confirm.</p>
 
                 <input type="text" onChange={(input) => HandelInputChange(input)} />
 

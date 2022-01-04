@@ -4,12 +4,15 @@ import './CardStyle.css';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import { Link } from 'react-router-dom';
+import { APP_URL } from '../API/URLConstants';
 
 const Card = (props) => {
 
     const [Open, setOpen] = useState(false);
     const [openSnackbar, setOpenSnackbar] = useState(false);
     const [del, setDelete] = useState(false);
+    const book = (props.type === "book");
+    const review = (props.type === "review");
 
     useEffect(() => {
         if (del === true) {
@@ -66,7 +69,7 @@ const Card = (props) => {
                     onClose={handleClose}
                     severity="warning"
                 >
-                    The book deleted
+                    The {props.cardName} deleted
                     <button className="undo-btn" onClick={handelUndo}>
                         UNDO
                     </button>
@@ -82,35 +85,94 @@ const Card = (props) => {
                                 handleClick={handleClick}
                                 CloseWindow={CloseWindow}
                                 handelDelete={handelDelete}
-                                booktitle={props.bookTitle}
+                                cardName={props.cardName}
                                 genre={props.genre}
+                                email={props.email}
                             />
-
                         </>
                         : null
                 }
 
-                <span>
-                    <a
-                        href={`http://localhost:3001/genre/${props.genreId}/books/${props.bookId}`}
-                        target="_blank"
-                        rel="noreferrer"
-                    >
-                        {props.bookTitle}
-                    </a>
-                </span>
-                <span>{props.publisher}</span>
-                <span>{props.genre}</span>
+                {
+                    props.pic ?
+                        <div className="img-div">
+                            <img className="card-img" src={props.pic} alt={props.cardName} />
+                        </div>
+                        :
+                        null
+                }
 
+                {
+                    props.cardName ?
+                        <span>
+                            <a
+                                href={`${APP_URL}/${props.url}`}
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                {props.cardName.length > 50 ? props.cardName.substring(0, 50) + "....." : props.cardName}
+                            </a>
+                        </span>
+                        :
+                        null
+                }
+
+                {
+                    props.genre ?
+                        <span>{props.genre}</span>
+                        :
+                        null
+                }
+
+                {
+                    props.publisher ?
+                        <span>{props.publisher}</span>
+                        :
+                        null
+                }
+
+                {
+                    props.reviewerName ?
+                        <span>{props.reviewerName}</span>
+                        :
+                        null
+                }
+
+                {
+                    props.email ?
+                        <span>{props.email}</span>
+                        :
+                        null
+                }
+
+                {
+                    props.upVote ?
+                        <span>{props.upVote} vote UP</span>
+                        :
+                        null
+                }
+
+                {
+                    props.downVote || props.downVote >= 0 ?
+                        <span>{props.downVote} vote DOWN</span>
+                        :
+                        null
+                }
                 <div className="btn-container">
 
-                    <Link to={`/books-management/edit-book/genre/${props.genreId}/book/${props.bookId}`}>
-                        <button
-                            className="card-btn edit"
-                        >
-                            <i className="fa fa-pencil" aria-hidden="true"></i> edit
-                        </button>
-                    </Link>
+                    {
+                        props.editPage ?
+
+                            <Link
+                                to={props.editPage}
+                            >
+                                <button className="card-btn edit">
+                                    <i className="fa fa-pencil" aria-hidden="true"></i> edit
+                                </button>
+                            </Link>
+                            :
+                            null
+                    }
 
                     <button
                         className="card-btn delete"
