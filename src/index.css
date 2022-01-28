@@ -69,6 +69,11 @@
     "sidebar nav nav nav"
     "sidebar main main main";
   }
+
+  .page-container{
+    grid-area: main;
+    padding: 25px;
+}
   
   @media only screen and (max-width:978px) {
     .container{

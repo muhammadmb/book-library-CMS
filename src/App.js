@@ -9,6 +9,7 @@ import AddBook from './Components/AddBook/AddBook';
 import AuthorsManagement from './Components/Pages/AuthorsManagement/AuthorsManagement';
 import ReviewsManagement from './Components/Pages/ReviewsManagement/ReviewsManagement';
 import SuggestionsPage from './Components/Pages/SuggestionsPage/SuggestionsPage';
+import Feedback from './Components/Pages/Feedback/Feedback';
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
           <Route path="/authors-management" render={() => <Layout> <AuthorsManagement /> </Layout>} />
           <Route path="/reviews-management" render={() => <Layout> <ReviewsManagement /> </Layout>} />
           <Route path="/suggestions" render={() => <Layout> <SuggestionsPage /> </Layout>} />
+          <Route path="/feedback" render={() => <Layout> <Feedback /> </Layout>} />
           <Route path="/sign-in" component={SignIn} />
           <Route path="/book-library-dashboard" component={SignIn} />
         </Switch>

@@ -11,8 +11,6 @@ const Card = (props) => {
     const [Open, setOpen] = useState(false);
     const [openSnackbar, setOpenSnackbar] = useState(false);
     const [del, setDelete] = useState(false);
-    const book = (props.type === "book");
-    const review = (props.type === "review");
 
     useEffect(() => {
         if (del === true) {
