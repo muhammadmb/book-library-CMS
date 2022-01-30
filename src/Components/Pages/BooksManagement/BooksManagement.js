@@ -11,7 +11,7 @@ const BooksManagement = () => {
     }
 
     return (
-        <div className="bm-container">
+        <div className="page-container">
             <Search
                 type="book"
                 addUrl="/books-management/add"

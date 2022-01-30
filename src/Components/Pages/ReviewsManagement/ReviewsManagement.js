@@ -11,7 +11,7 @@ function ReviewsManagement() {
     }
 
     return (
-        <div className="re-container">
+        <div className="page-container">
             <Search
                 type="review"
                 data={searchData}

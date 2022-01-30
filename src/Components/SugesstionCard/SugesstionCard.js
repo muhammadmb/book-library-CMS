@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './SugesstionCardStyle.css';
-import AddBook from '../AddBook/AddBook';
+import AddBook from '../Add Elements/AddBook/AddBook';
 
 const SugesstionCard = (props) => {
 

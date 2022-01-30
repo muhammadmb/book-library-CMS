@@ -24,8 +24,8 @@
     color: #EEE;
 }
 
-.add-book input:not([type="submit"]),
-.add-book textarea {
+.sugesstion-card .addition input:not([type="submit"]),
+.sugesstion-card .addition textarea {
     background-color: #bebebe13;
     color: #3EA175;
 }

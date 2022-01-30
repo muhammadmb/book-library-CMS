@@ -11,7 +11,7 @@ const AuthorsManagement = () => {
     }
 
     return (
-        <div className="athr-container">
+        <div className="page-container">
             <Search
                 type="author"
                 addUrl="/authors-management/add"

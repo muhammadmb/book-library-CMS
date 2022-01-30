@@ -5,11 +5,12 @@ import Layout from './Components/Layout/Layout';
 import Main from './Components/Main/Main';
 import SignIn from './Components/SignIn/SignIn';
 import BooksManagement from './Components/Pages/BooksManagement/BooksManagement';
-import AddBook from './Components/AddBook/AddBook';
+import AddBook from './Components/Add Elements/AddBook/AddBook';
 import AuthorsManagement from './Components/Pages/AuthorsManagement/AuthorsManagement';
 import ReviewsManagement from './Components/Pages/ReviewsManagement/ReviewsManagement';
 import SuggestionsPage from './Components/Pages/SuggestionsPage/SuggestionsPage';
 import Feedback from './Components/Pages/Feedback/Feedback';
+import AddAuthor from './Components/Add Elements/AddAuthor/AddAuthor';
 
 function App() {
 
@@ -22,7 +23,8 @@ function App() {
           <Route exact path="/books-management" render={() => (<Layout> <BooksManagement /> </Layout>)} />
           <Route path="/books-management/add" render={() => (<Layout> <AddBook header="add a new book" /> </Layout>)} />
           <Route path="/books-management/edit-book/genre/:genreId/book/:bookId" render={() => (<Layout> <AddBook header="edit the book" /> </Layout>)} />
-          <Route path="/authors-management" render={() => <Layout> <AuthorsManagement /> </Layout>} />
+          <Route exact path="/authors-management" render={() => <Layout> <AuthorsManagement /> </Layout>} />
+          <Route path="/authors-management/add" render={() => <Layout> <AddAuthor /> </Layout>} />
           <Route path="/reviews-management" render={() => <Layout> <ReviewsManagement /> </Layout>} />
           <Route path="/suggestions" render={() => <Layout> <SuggestionsPage /> </Layout>} />
           <Route path="/feedback" render={() => <Layout> <Feedback /> </Layout>} />
