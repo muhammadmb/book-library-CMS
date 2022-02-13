@@ -11,6 +11,8 @@ import ReviewsManagement from './Components/Pages/ReviewsManagement/ReviewsManag
 import SuggestionsPage from './Components/Pages/SuggestionsPage/SuggestionsPage';
 import Feedback from './Components/Pages/Feedback/Feedback';
 import AddAuthor from './Components/Add Elements/AddAuthor/AddAuthor';
+import Profile from './Components/Pages/Profile/Profile';
+import ProfileLayout from './Components/Pages/Profile/ProfileLayout/ProfileLayout';
 
 function App() {
 
@@ -19,6 +21,7 @@ function App() {
       <BrowserRouter>
 
         <Switch>
+          <Route exact path="/" render={() => (<Layout> <Main /> </Layout>)} />
           <Route path="/dashboard" render={() => (<Layout> <Main /> </Layout>)} />
           <Route exact path="/books-management" render={() => (<Layout> <BooksManagement /> </Layout>)} />
           <Route path="/books-management/add" render={() => (<Layout> <AddBook header="add a new book" /> </Layout>)} />
@@ -28,6 +31,7 @@ function App() {
           <Route path="/reviews-management" render={() => <Layout> <ReviewsManagement /> </Layout>} />
           <Route path="/suggestions" render={() => <Layout> <SuggestionsPage /> </Layout>} />
           <Route path="/feedback" render={() => <Layout> <Feedback /> </Layout>} />
+          <Route path="/user/information" render={() => <ProfileLayout> <Profile /> </ProfileLayout>} />
           <Route path="/sign-in" component={SignIn} />
           <Route path="/book-library-dashboard" component={SignIn} />
         </Switch>

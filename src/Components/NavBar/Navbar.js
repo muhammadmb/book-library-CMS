@@ -17,7 +17,7 @@ function Navbar({ sidebarOpen, openSidebar }) {
             </div>
 
             <div className="navbar-right">
-                <Link to="/user">
+                <Link to="/user/information">
                     <Avatar>H</Avatar>
                 </Link>
             </div>
