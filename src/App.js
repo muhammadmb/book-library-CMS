@@ -13,6 +13,7 @@ import Feedback from './Components/Pages/Feedback/Feedback';
 import AddAuthor from './Components/Add Elements/AddAuthor/AddAuthor';
 import Profile from './Components/Pages/Profile/Profile';
 import ProfileLayout from './Components/Pages/Profile/ProfileLayout/ProfileLayout';
+import MyTeam from './Components/Pages/Profile/MyTeam/MyTeam';
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
           <Route path="/suggestions" render={() => <Layout> <SuggestionsPage /> </Layout>} />
           <Route path="/feedback" render={() => <Layout> <Feedback /> </Layout>} />
           <Route path="/user/information" render={() => <ProfileLayout> <Profile /> </ProfileLayout>} />
+          <Route path="/user/my-team" render={() => <ProfileLayout> <MyTeam /> </ProfileLayout>} />
           <Route path="/sign-in" component={SignIn} />
           <Route path="/book-library-dashboard" component={SignIn} />
         </Switch>

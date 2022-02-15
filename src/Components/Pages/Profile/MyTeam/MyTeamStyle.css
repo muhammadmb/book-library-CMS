@@ -1,0 +1,38 @@
+.my-team-container {
+    padding: 0;
+    color: #FFF;
+    position: relative;
+}
+
+.my-team-container .team-header {
+    height: 240px;
+    width: 100%;
+    object-fit: cover;
+    background-color: #00A89B;
+    background-size: cover;
+    position: absolute;
+    z-index: -1;
+}
+
+.my-team-container h2 {
+    padding: 25px 20px 5px;
+}
+
+.my-team-container .team-cards {
+    padding: 15px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 978px) {
+
+    .my-team-container h2 {
+        text-align: center;
+    }
+
+    .my-team-container .team-cards {
+        padding-left: 70px;
+    }
+}
