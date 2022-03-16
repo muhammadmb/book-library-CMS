@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Layout from './Components/Layout/Layout';
 import Main from './Components/Main/Main';
 import SignIn from './Components/SignIn/SignIn';
@@ -21,22 +21,22 @@ function App() {
     <div className="container">
       <BrowserRouter>
 
-        <Switch>
-          <Route exact path="/" render={() => (<Layout> <Main /> </Layout>)} />
-          <Route path="/dashboard" render={() => (<Layout> <Main /> </Layout>)} />
-          <Route exact path="/books-management" render={() => (<Layout> <BooksManagement /> </Layout>)} />
-          <Route path="/books-management/add" render={() => (<Layout> <AddBook header="add a new book" /> </Layout>)} />
-          <Route path="/books-management/edit-book/genre/:genreId/book/:bookId" render={() => (<Layout> <AddBook header="edit the book" /> </Layout>)} />
-          <Route exact path="/authors-management" render={() => <Layout> <AuthorsManagement /> </Layout>} />
-          <Route path="/authors-management/add" render={() => <Layout> <AddAuthor /> </Layout>} />
-          <Route path="/reviews-management" render={() => <Layout> <ReviewsManagement /> </Layout>} />
-          <Route path="/suggestions" render={() => <Layout> <SuggestionsPage /> </Layout>} />
-          <Route path="/feedback" render={() => <Layout> <Feedback /> </Layout>} />
-          <Route path="/user/information" render={() => <ProfileLayout> <Profile /> </ProfileLayout>} />
-          <Route path="/user/my-team" render={() => <ProfileLayout> <MyTeam /> </ProfileLayout>} />
-          <Route path="/sign-in" component={SignIn} />
-          <Route path="/book-library-dashboard" component={SignIn} />
-        </Switch>
+        <Routes>
+          <Route exact path="/" element={<Layout> <Main /> </Layout>} />
+          <Route path="/dashboard" element={<Layout> <Main /> </Layout>} />
+          <Route exact path="/books-management" element={<Layout> <BooksManagement /> </Layout>} />
+          <Route path="/books-management/add" element={<Layout> <AddBook header="add a new book" /> </Layout>} />
+          <Route path="/books-management/edit-book/genre/:genreId/book/:bookId" element={<Layout> <AddBook header="edit the book" /> </Layout>} />
+          <Route exact path="/authors-management" element={<Layout> <AuthorsManagement /> </Layout>} />
+          <Route path="/authors-management/add" element={<Layout> <AddAuthor /> </Layout>} />
+          <Route path="/reviews-management" element={<Layout> <ReviewsManagement /> </Layout>} />
+          <Route path="/suggestions" element={<Layout> <SuggestionsPage /> </Layout>} />
+          <Route path="/feedback" element={<Layout> <Feedback /> </Layout>} />
+          <Route path="/user/information" element={<ProfileLayout> <Profile /> </ProfileLayout>} />
+          <Route path="/user/my-team" element={<ProfileLayout> <MyTeam /> </ProfileLayout>} />
+          <Route path="/sign-in" element={<SignIn />} />
+          <Route path="/book-library-dashboard" element={<SignIn />} />
+        </Routes>
 
       </BrowserRouter>
     </div>

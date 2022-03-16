@@ -4,7 +4,7 @@ import './CardStyle.css';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import { Link } from 'react-router-dom';
-import { APP_URL } from '../API/URLConstants';
+import { APP_URL } from '../../API/URLConstants';
 
 const Card = (props) => {
 

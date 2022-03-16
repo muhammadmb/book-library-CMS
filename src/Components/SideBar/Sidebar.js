@@ -17,9 +17,8 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
       <div className="sidebar-menu">
         <div className="sidebar-link">
           <NavLink
-            className="link"
-            activeClassName="active-menu-link"
             to="/dashboard"
+            className={({ isActive }) => isActive ? "link active-menu-link" : "link"}
             onClick={() => closeSidebar()}
           >
             <i className="fa fa-home"></i>
@@ -31,8 +30,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
 
         <div className="sidebar-link">
           <NavLink
-            className="link"
-            activeClassName="active-menu-link"
+            className={({ isActive }) => isActive ? "link active-menu-link" : "link"}
             to="/books-management"
             onClick={() => closeSidebar()}
           >
@@ -43,8 +41,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
 
         <div className="sidebar-link">
           <NavLink
-            className="link"
-            activeClassName="active-menu-link"
+            className={({ isActive }) => isActive ? "link active-menu-link" : "link"}
             to="/authors-management"
             onClick={() => closeSidebar()}
           >
@@ -55,8 +52,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
 
         <div className="sidebar-link">
           <NavLink
-            className="link"
-            activeClassName="active-menu-link"
+            className={({ isActive }) => isActive ? "link active-menu-link" : "link"}
             to="/reviews-management"
             onClick={() => closeSidebar()}
           >
@@ -69,8 +65,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
 
         <div className="sidebar-link">
           <NavLink
-            className="link"
-            activeClassName="active-menu-link"
+            className={({ isActive }) => isActive ? "link active-menu-link" : "link"}
             to="/suggestions"
             onClick={() => closeSidebar()}
           >
@@ -81,8 +76,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
 
         <div className="sidebar-link">
           <NavLink
-            className="link"
-            activeClassName="active-menu-link"
+            className={({ isActive }) => isActive ? "link active-menu-link" : "link"}
             to="/feedback"
             onClick={() => closeSidebar()}
           >

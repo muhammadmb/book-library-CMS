@@ -1,12 +1,14 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom";
 import './SignInStyle.css';
 import img from '../../Images/SignIn.png'
 
-const SignIn = (props) => {
+const SignIn = () => {
 
+    let navigate = useNavigate();
     const handelSubmit = (e) => {
         e.preventDefault();
-        props.history.push('/dashboard');
+        navigate('/dashboard');
     }
 
     return (
