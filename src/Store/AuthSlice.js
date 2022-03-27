@@ -52,7 +52,7 @@ const authSlice = createSlice({
             localStorage.setItem("user", JSON.stringify(state));
         },
         [login.rejected]: (state, action) => {
-            state.errors = action.payload.errors;
+            state.errors = action.payload;
             state.success = false;
             state.loading = false;
         }

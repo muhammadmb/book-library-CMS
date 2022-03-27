@@ -33,17 +33,24 @@
     font-size: 16px;
 }
 
+.submit-button {
+    height: 80px;
+}
+
 .signInContainer .form input[type="submit"]{
     color: #EEE;
     font-size: 22px;
     background-color: #2861A3;
-    transition: .3s ease-in-out;
+    transition: background-color .3s, visibility 0s;
     cursor: pointer;
 }
 
 .signInContainer .form input[type="submit"]:hover{
     background-color: #e91e63;
-    transition: .3s ease-in-out;
+}
+
+.signInContainer .form .hide {
+    visibility: hidden;
 }
 
 .signInContainer .form span{
@@ -74,6 +81,57 @@
 
 .signInContainer .imgContainer img{
     width: 100%;
+}
+
+.load-row {
+    position: relative;
+    top: -80%;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.load-block {
+    display: inline-block;
+    border-radius: 0;
+    transition: width 0.5s ease, height 0.5s ease, margin 0.5s ease, border-radius 0.5s ease;
+}
+
+.load-block:nth-child(1) {
+    border-radius: 5px 0 0 5px;
+}
+
+.load-block:nth-child(3) {
+    border-radius: 0 5px 5px 0;
+}
+
+.load-block-anim {
+    background-color: #2861A3;
+    margin: 5px;
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    border-radius: 50%;
+    transition: width 0.5s ease, height 0.5s ease, margin 0.5s ease, border-radius 0.5s ease;
+}
+
+.load-block-anim:nth-child(1) {
+    animation: jump 1.5s infinite;
+}
+  
+.load-block-anim:nth-child(2) {
+    animation: jump 1.5s 0.2s infinite;
+}
+  
+.load-block-anim:nth-child(3) {
+    animation: jump 1.5s 0.4s infinite;
+}
+  
+@keyframes jump {
+    0%, 40%, 100% {transform: translateY(0px);}
+    70% {
+      transform: translateY(-20px);
+      background-color: #e91e63;
+    }
 }
 
 @media (max-width: 991px){
