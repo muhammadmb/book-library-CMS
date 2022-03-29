@@ -56,27 +56,23 @@
   font-weight: 700;
 }
 
-.sidebar-link .link i {
+.sidebar-link .link i,
+.sidebar-logout .link i {
   margin-right: 10px;
   font-size: 18px;
 }
 
 .sidebar-logout {
   margin-top: 20px;
-  padding: 10px;
   color: #e65061;
+  cursor: pointer;
 }
 
-.sidebar-logout > a {
+.sidebar-logout > .link {
   text-decoration: none;
   color: #e65061;
   font-weight: 700;
   text-transform: uppercase;
-}
-
-.sidebar-logout > i {
-  margin-right: 10px;
-  font-size: 18px;
 }
 
 @media only screen and (max-width: 978px) {

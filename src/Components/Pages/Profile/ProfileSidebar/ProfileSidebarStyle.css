@@ -22,6 +22,7 @@
 
 .sidebar-link-pr:last-child .link{
     color: red;
+    cursor: pointer;
 }
 
 .sidebar-link-pr .link .fa {

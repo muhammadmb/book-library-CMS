@@ -1,8 +1,19 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { NavLink, useNavigate } from "react-router-dom";
+import { logout } from "../../Store/AuthSlice";
 import "./SidebarStyle.css";
 
 const Sidebar = ({ sidebarOpen, closeSidebar }) => {
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handelLogout = () => {
+    dispatch(logout());
+    closeSidebar();
+    navigate("/sign-in");
+  }
+
   return (
     <div className={sidebarOpen ? "sidebar-responsive sidebar" : "sidebar"}>
       <div className="sidebar-title">
@@ -86,10 +97,13 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
         </div>
 
         <div className="sidebar-logout">
-          <Link className="link" to="/logout " onClick={() => closeSidebar()}>
+          <span
+            className="link"
+            to="/logout"
+            onClick={handelLogout}>
             <i className="fa fa-sign-out"></i>
             Log Out
-          </Link>
+          </span>
         </div>
       </div>
     </div>
