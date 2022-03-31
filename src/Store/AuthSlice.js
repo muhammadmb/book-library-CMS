@@ -1,17 +1,19 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { axiosPrivate } from "../API/axios";
+import { axiosAuth } from "../API/axios";
 
 const initialState =
     localStorage.getItem("user") ?
         JSON.parse(localStorage.getItem("user"))
         :
         {
-            name: "",
+            firstName: "",
+            LastName: "",
             isLoggedIn: false,
             roles: [],
             success: false,
             errors: null,
-            loading: false
+            loading: false,
+            token: ""
         };
 
 export const login = createAsyncThunk(
@@ -19,12 +21,37 @@ export const login = createAsyncThunk(
     async (userData, thunkAPI) => {
         const { rejectWithValue } = thunkAPI;
         try {
-            const log = await axiosPrivate.post('/AuthenticationManagement/Login', {
+            const log = await axiosAuth.post('/AuthenticationManagement/Login', {
                 email: userData.email,
                 password: userData.password
             });
-            console.log(log.data);
             return log.data;
+        }
+        catch (error) {
+            return rejectWithValue(error.message);
+        }
+    }
+);
+
+export const refreshToken = createAsyncThunk(
+    "auth/refreshToken",
+    async (_, thunkAPI) => {
+        const { rejectWithValue } = thunkAPI;
+        try {
+            const token = await axiosAuth.post('/AuthenticationManagement/RefreshToken', {
+                token: JSON.parse(localStorage.getItem("user")).token
+            })
+                .catch(
+                    function (error) {
+                        if (error.response) {
+                            return (error.response)
+                        } else if (error.request) {
+                            return (error.request)
+                        } else {
+                            return (error.message)
+                        }
+                    });
+            return token.data;
         }
         catch (error) {
             return rejectWithValue(error.message);
@@ -35,7 +62,12 @@ export const login = createAsyncThunk(
 const authSlice = createSlice({
     name: "auth",
     initialState,
-    reducers: {},
+    reducers: {
+        logout: async (state) => {
+            localStorage.removeItem("user");
+            return state = initialState;
+        }
+    },
     extraReducers: {
         [login.pending]: (state, action) => {
             state.success = true;
@@ -45,8 +77,10 @@ const authSlice = createSlice({
         [login.fulfilled]: (state, action) => {
             state.errors = action.payload.errors;
             state.success = action.payload.success;
-            state.name = action.payload.name;
+            state.firstName = action.payload.firstName;
+            state.LastName = action.payload.LastName;
             state.roles = action.payload.roles;
+            state.token = action.payload.token;
             state.isLoggedIn = true;
             state.loading = false;
             localStorage.setItem("user", JSON.stringify(state));
@@ -55,6 +89,29 @@ const authSlice = createSlice({
             state.errors = action.payload;
             state.success = false;
             state.loading = false;
+            localStorage.setItem("user", JSON.stringify(state));
+        },
+
+        [refreshToken.pending]: (state, action) => {
+            state.success = true;
+            state.errors = null;
+        },
+        [refreshToken.fulfilled]: (state, action) => {
+            if (action.payload?.errors === "Refresh token missed") {
+                localStorage.removeItem("user");
+                return state = initialState;
+            }
+            state.token = action.payload.token ? action.payload.token : JSON.parse(localStorage.getItem("user"))?.token;
+            state.loading = false;
+            state.errors = action.payload.errors;
+            localStorage.setItem("user", JSON.stringify(state));
+        },
+        [refreshToken.rejected]: (state, action) => {
+            console.log(action.payload)
+            console.log(action)
+            state.errors = action.payload;
+            state.success = false;
+            localStorage.setItem("user", JSON.stringify(state));
         }
     }
 });
