@@ -75,6 +75,91 @@
     padding: 25px;
 }
   
+.card-img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.nav-btn {
+  cursor: pointer;
+  outline: none;
+  border: transparent;
+  text-decoration: none;
+  background-color: #17A288;
+  border-radius: 5px;
+  color: #FFF;
+  padding: 7px 20px;
+  position: relative;
+  transition: 0.5s;
+}
+
+.nav-btn:focus {
+  outline: none;
+}
+
+.nav-btn:after {
+  position: absolute;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.next:after {
+  content: '»';
+  right: -20px;
+}
+
+.next:hover {
+  background-color: #1f7061;
+  padding-right: 27px;
+  padding-left:13px;
+}
+
+.next:hover:after {
+  opacity: 1;
+  right: 10px;
+}
+
+.previous:after {
+  content: '«';
+  left: -20px;
+}
+
+.previous:hover{
+  background-color: #1f7061;
+  padding-right: 13px;
+  padding-left: 27px;
+}
+
+.previous:hover:after {
+  opacity: 1;
+  left: 10px;
+}
+
+.nav-btn[disabled] {
+  background-color: #1f7061;
+  cursor: auto;
+}
+
+.nav-btn[disabled]:hover {
+  padding: 7px 20px;
+}
+
+.nav-btn[disabled]:hover:after{
+  opacity: 0;
+}
+
   @media only screen and (max-width:978px) {
     .container{
       grid-template-columns: 1fr;

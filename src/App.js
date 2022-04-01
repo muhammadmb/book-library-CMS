@@ -27,6 +27,7 @@ function App() {
             <Route exact path="/" element={<Layout> <Main /> </Layout>} />
             <Route path="/dashboard" element={<Layout> <Main /> </Layout>} />
             <Route exact path="/books-management" element={<Layout> <BooksManagement /> </Layout>} />
+            <Route exact path="/books-management/:pageNumber" element={<Layout> <BooksManagement /> </Layout>} />
             <Route path="/books-management/add" element={<Layout> <AddBook header="add a new book" /> </Layout>} />
             <Route path="/books-management/edit-book/genre/:genreId/book/:bookId" element={<Layout> <AddBook header="edit the book" /> </Layout>} />
             <Route exact path="/authors-management" element={<Layout> <AuthorsManagement /> </Layout>} />

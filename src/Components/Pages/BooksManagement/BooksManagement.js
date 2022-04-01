@@ -4,20 +4,34 @@ import Search from '../../Search/Search';
 import { getBooks } from '../../../Store/BooksSlice';
 import './BooksManagementStyle.css';
 import { useDispatch, useSelector } from 'react-redux';
+import BookLoading from '../../../Loading/BookLoading/BookLoading';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const BooksManagement = () => {
 
-    const { books, errors, booksLoading } = useSelector((state) => state.books);
-    const dispatch = useDispatch();
+    let { pageNumber } = useParams();
+    const { books, errors, booksLoading, headers } = useSelector((state) => state.books);
+    const [hasNext, setHasNext] = useState();
+    const [hasPrevious, setHasPrevious] = useState();
     const [searchQuery, setSearchQuery] = useState([]);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (headers) {
+            setHasNext(JSON.parse(headers["x-pagination"])?.hasNext);
+            setHasPrevious(JSON.parse(headers["x-pagination"])?.hasPrevious);
+        }
+    }, [headers, pageNumber]);
+
     useEffect(() => {
         dispatch(getBooks({
             fields: "id,genre,bookTitle,bookCover,publisher, addedDate, updateDate, author",
             searchQuery,
-            pageNumber: 1,
+            pageNumber,
             pageSize: 10
         }));
-    }, [dispatch, searchQuery]);
+    }, [dispatch, searchQuery, pageNumber]);
 
     const searchData = (data) => {
         setSearchQuery(data);
@@ -30,6 +44,12 @@ const BooksManagement = () => {
                 addUrl="/books-management/add"
                 searchQuery={searchData}
             />
+
+            {
+                errors === null &&
+                booksLoading === true &&
+                <BookLoading />
+            }
 
             {
                 books.length === 0 &&
@@ -53,6 +73,27 @@ const BooksManagement = () => {
             }
 
             <BookCard />
+
+            {
+                books.length !== 0 &&
+                <div className='nav-buttons'>
+                    <button
+                        className='nav-btn previous'
+                        onClick={() => navigate(`/books-management/${Number.parseInt(pageNumber ? pageNumber : 1) - 1}`)}
+                        disabled={!hasPrevious}
+                    >
+                        Previous
+                    </button>
+
+                    <button
+                        className='nav-btn next'
+                        onClick={() => navigate(`/books-management/${Number.parseInt(pageNumber ? pageNumber : 1) + 1}`)}
+                        disabled={!hasNext}
+                    >
+                        Next
+                    </button>
+                </div>
+            }
         </div>
     )
 }

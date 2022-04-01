@@ -4,18 +4,28 @@ import './SearchStyle.css';
 
 const Search = (props) => {
 
+    const [search, setSearch] = useState([]);
+
     const handelSearch = () => {
-        setData();
-        props.data(data);
+        props.searchQuery(search);
     }
 
-    const [data, setData] = useState([]);
+    const handelKeyPress = e => {
+        if (e.key === "Enter") {
+            handelSearch();
+        }
+    }
 
     return (
         <div className="search-container">
             <div className="search-header">
                 <div className="search-area">
-                    <input className="search-box" type="text" placeholder="search" />
+                    <input
+                        className="search-box"
+                        type="search"
+                        placeholder="search"
+                        onChange={(e) => setSearch(e.target.value)}
+                        onKeyPress={handelKeyPress} />
                     <i
                         onClick={handelSearch}
                         className="fa fa-search"
