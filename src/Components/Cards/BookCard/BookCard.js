@@ -29,7 +29,7 @@ const BookCard = () => {
                             </span>
                             <span className='book-title'>
                                 <span>
-                                    <a href={`${APP_URL}/genes/${book.genre?.id}/books/${book.id}`} >
+                                    <a href={`${APP_URL}/genre/${book.genre?.id}/books/${book.id}`} >
                                         {book.bookTitle}
                                     </a>
                                 </span>
