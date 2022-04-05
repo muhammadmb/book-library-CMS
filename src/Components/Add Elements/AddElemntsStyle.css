@@ -10,7 +10,6 @@
     font-weight: 700;
 }
 
-
 .addition > form{
     display: flex;
     flex-wrap: wrap;
@@ -114,6 +113,42 @@
     color: #FFF;
     background-color: #00453f;
     transition: .5s all ease-in-out;
+}
+
+.options {
+    list-style: none;
+    background-color: #EEE;
+    position: absolute;
+    overflow-y: auto;
+    color: #003e70;
+    padding: 5px;
+    width: 31%;
+    border-radius: 5px;
+    transition: .5s;
+    height: 200px;
+}
+
+ul li {
+    padding: 8px;
+    cursor: pointer;
+}
+
+ul li:hover {
+    background-color: rgb(194, 194, 194);
+}
+
+.submit-change {
+    position: fixed;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    background-color: #00000030;
+}
+
+.submit-change .loader .balls-container .ball {
+    background-color: #000;
 }
 
 @media only screen and (max-width: 500px){
