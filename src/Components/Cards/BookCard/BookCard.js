@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { APP_URL } from '../../../API/URLConstants';
 import { deleteBook } from '../../../Store/BooksSlice';
-import './BookCardStyle.css';
+import '../CardsStyle.css';
 
 const BookCard = () => {
 
@@ -19,15 +19,15 @@ const BookCard = () => {
     }
 
     return (
-        <div className='book-cards'>
+        <div className='cards'>
             {
                 books.map((book) => (
-                    <div className='book' key={book.id}>
+                    <div className='card-content' key={book.id}>
                         <span>
                             <span>
                                 <img className='card-img' src={book.bookCover} alt={book.bookTitle} />
                             </span>
-                            <span className='book-title'>
+                            <span className='card-title'>
                                 <span>
                                     <a href={`${APP_URL}/genre/${book.genre?.id}/books/${book.id}`} >
                                         {book.bookTitle}

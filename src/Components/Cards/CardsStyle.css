@@ -1,18 +1,9 @@
-.book {    
-    display: grid;
-    grid-template-columns: 30% repeat(4, calc(70% / 4));
-    align-items: center;
-    margin: 20px 0;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #000;
-}
-
-.book-cards span {
+.cards span {
     display: flex;
     align-items: center;
 }
 
-.book-cards .book-title {
+.cards .card-title {
     margin-left: 15px;
     display: flex;
     flex-direction: column;
@@ -24,7 +15,16 @@
     color: rgb(107, 107, 107);
 }
 
-.card-btn{
+.card-content {    
+    display: grid;
+    grid-template-columns: 30% repeat(4, calc(70% / 4));
+    align-items: center;
+    margin: 20px 0;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #000;
+}
+
+.card-btn {
     padding: 5px;
     min-width: 48%;
     cursor: pointer;
@@ -35,7 +35,7 @@
     margin-right: 5px;
 }
 
-.card-btn.edit{
+.card-btn.edit {
     background-color: #115384;
     border: 1px solid #115384;
 }
@@ -44,7 +44,7 @@
     color: #EEE;
 }
 
-.card-btn.edit:hover{
+.card-btn.edit:hover {
     background-color: transparent;
 }
 
@@ -52,13 +52,13 @@
     color: #115384;
 }
 
-.card-btn.delete{
+.card-btn.delete {
     color: #EEE;
     background-color: #BA372A;
     border: 1px solid #BA372A;
 }
 
-.card-btn.delete:hover{
+.card-btn.delete:hover {
     color: #BA372A;
     background-color: transparent;
 }
