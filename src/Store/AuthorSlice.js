@@ -132,7 +132,12 @@ export const deleteAuthor = createAsyncThunk(
 const AuthorSlice = createSlice({
     name: "authors",
     initialState,
-    reducers: {},
+    reducers: {
+        resetState: (state) => {
+            state.authorAdded = false;
+            state.authorUpdated = false;
+        }
+    },
     extraReducers: {
         [getAuthors.pending]: (state, action) => {
             state.errors = null;
@@ -154,8 +159,13 @@ const AuthorSlice = createSlice({
             state.errors = null;
         },
         [insertAuthor.fulfilled]: (state, action) => {
-            state.authorUpdated = false;
-            state.authorAdded = true;
+            if (action.payload?.status === 201) {
+                state.authorUpdated = false;
+                state.authorAdded = true;
+                state.errors = null;
+            } else {
+                state.errors = action.payload?.data.title;
+            }
         },
         [insertAuthor.rejected]: (state, action) => {
             state.errors = action.payload;
@@ -165,9 +175,13 @@ const AuthorSlice = createSlice({
             state.errors = null;
         },
         [editAuthor.fulfilled]: (state, action) => {
-            state.authorUpdated = true;
-            state.authorAdded = false;
-            state.authors = state.authors.filter((b) => b.id !== action.meta?.arg);
+            if (action.payload?.status === 204) {
+                state.authorUpdated = true;
+                state.authorAdded = false;
+                state.errors = null;
+            } else {
+                state.errors = action.payload?.data.title;
+            }
         },
         [editAuthor.rejected]: (state, action) => {
             state.errors = action.payload;
@@ -185,5 +199,7 @@ const AuthorSlice = createSlice({
 
     }
 });
+
+export const { resetState } = AuthorSlice.actions;
 
 export default AuthorSlice.reducer;
