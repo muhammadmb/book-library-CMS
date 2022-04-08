@@ -31,7 +31,9 @@ function App() {
             <Route path="/books-management/add" element={<Layout> <AddBook header="add a new book" /> </Layout>} />
             <Route path="/books-management/edit-book/genre/:genreId/book/:bookId" element={<Layout> <AddBook header="edit the book" /> </Layout>} />
             <Route exact path="/authors-management" element={<Layout> <AuthorsManagement /> </Layout>} />
+            <Route exact path="/authors-management/:pageNumber" element={<Layout> <AuthorsManagement /> </Layout>} />
             <Route path="/authors-management/add" element={<Layout> <AddAuthor /> </Layout>} />
+            <Route path="/authors-management/edit-author/:authorId" element={<Layout> <AddAuthor /> </Layout>} />
             <Route path="/reviews-management" element={<Layout> <ReviewsManagement /> </Layout>} />
             <Route path="/suggestions" element={<Layout> <SuggestionsPage /> </Layout>} />
             <Route path="/feedback" element={<Layout> <Feedback /> </Layout>} />
