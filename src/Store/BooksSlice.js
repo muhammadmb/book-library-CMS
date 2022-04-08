@@ -68,11 +68,11 @@ export const insertBook = createAsyncThunk(
 export const editBook = createAsyncThunk(
     "books/edit",
     async (bookData, thunkAPI) => {
-        const { id, genreId } = bookData;
+        const { id } = bookData;
         if (Math.floor((new Date()).getTime() / 1000) > ParseJWT(JSON.parse(localStorage.getItem("user")).token).exp) {
             await thunkAPI.dispatch(refreshToken());
         }
-        const book = await axios.put(`${API_URL}/Genres/${genreId}/Books/${id}`,
+        const book = await axios.put(`${API_URL}/Genres/${bookData.genre.id}/Books/${id}`,
             bookData,
             {
                 headers: {
