@@ -34,7 +34,8 @@ function App() {
             <Route exact path="/authors-management/:pageNumber" element={<Layout> <AuthorsManagement /> </Layout>} />
             <Route path="/authors-management/add" element={<Layout> <AddAuthor /> </Layout>} />
             <Route path="/authors-management/edit-author/:authorId" element={<Layout> <AddAuthor /> </Layout>} />
-            <Route path="/reviews-management" element={<Layout> <ReviewsManagement /> </Layout>} />
+            <Route path="/reviews-management/genre/:genreId/book/:bookId/reviews" element={<Layout> <ReviewsManagement /> </Layout>} />
+            <Route path="/reviews-management/genre/:genreId/book/:bookId/reviews/:pageNumber" element={<Layout> <ReviewsManagement /> </Layout>} />
             <Route path="/suggestions" element={<Layout> <SuggestionsPage /> </Layout>} />
             <Route path="/feedback" element={<Layout> <Feedback /> </Layout>} />
             <Route path="/user/information" element={<ProfileLayout> <Profile /> </ProfileLayout>} />
