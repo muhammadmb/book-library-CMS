@@ -4,16 +4,44 @@
     text-transform: capitalize;
 }
 
-.tb-header {
+.tb-header,
+.tb-header-5,
+.tb-header-4 {
     display: grid;
     grid-template-columns: 30% repeat(4, calc(70% / 4));
     background-color: #e1f0f8;
     padding: 5px 0;
     color: rgb(90, 90, 90);
+    font-size: 20px;
     font-weight: 600;
+}
+
+.tb-header-5 {
+    font-size: 20px;
+    grid-template-columns: 25% repeat(4, calc(57% / 4)) 18%;
+}
+
+.tb-header-4 {
+    grid-template-columns: 30% repeat(3,calc(70% / 3));
 }
 
 .tb-header span {
     font-size: 20px;
     text-transform: capitalize;
+}
+
+.loading {
+    position: fixed;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    background-color: #00000030;
+}
+
+.no-reviews {
+    text-transform: capitalize;
+    font-size: 25px;
+    color: rgb(121, 121, 121);
 }
