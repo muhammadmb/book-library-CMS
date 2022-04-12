@@ -22,7 +22,7 @@ const BookCard = () => {
         <div className='cards'>
             {
                 books.map((book) => (
-                    <div className='card-content' key={book.id}>
+                    <div className='card-content-5' key={book.id}>
                         <span>
                             <span>
                                 <img className='card-img' src={book.bookCover} alt={book.bookTitle} />
@@ -52,14 +52,20 @@ const BookCard = () => {
                             {book.updateDate?.substring(0, 4) === "0001" ? "No update" : book.updateDate?.substring(0, 10)}
                         </span>
 
+                        <Link
+                            className="card-btn review"
+                            to={`/reviews-management/genre/${book.genre?.id}/book/${book.id}/reviews/1`}
+                        >
+                            <i className="fa fa-comments" aria-hidden="true"></i> reviews
+                        </Link>
+
                         <span>
-                            <button className="card-btn edit">
-                                <Link
-                                    to={`/books-management/edit-book/genre/${book.genre?.id}/book/${book.id}`}
-                                >
-                                    <i className="fa fa-pencil" aria-hidden="true"></i> edit
-                                </Link>
-                            </button>
+                            <Link
+                                className="card-btn edit"
+                                to={`/books-management/edit-book/genre/${book.genre?.id}/book/${book.id}`}
+                            >
+                                <i className="fa fa-pencil" aria-hidden="true"></i> edit
+                            </Link>
                             {
                                 roles.find((role) => role === "Master") &&
                                 <button
