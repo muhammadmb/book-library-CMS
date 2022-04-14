@@ -15,13 +15,23 @@
     color: rgb(107, 107, 107);
 }
 
-.card-content {    
+.card-content,
+.card-content-5,
+.card-content-4 {    
     display: grid;
     grid-template-columns: 30% repeat(4, calc(70% / 4));
     align-items: center;
     margin: 20px 0;
     padding-bottom: 20px;
     border-bottom: 1px solid #000;
+}
+
+.card-content-5 {
+    grid-template-columns: 25% repeat(4, calc(57% / 4)) 18%;
+}
+
+.card-content-4 {
+    grid-template-columns: 30% repeat(3,calc(70% / 3));
 }
 
 .card-btn {
@@ -31,8 +41,20 @@
     border-radius: 5px;
     outline: none;
     text-transform: uppercase;
-    height: 30px;
     margin-right: 5px;
+    color: #EEE;
+    text-align: center;
+}
+
+.card-btn.review {
+    background-color: #009688;
+    border: 1px solid #009688;
+    width: 70%;
+}
+
+.card-btn.review:hover {
+    background-color: transparent;
+    color: #009688;
 }
 
 .card-btn.edit {
@@ -40,22 +62,15 @@
     border: 1px solid #115384;
 }
 
-.card-btn.edit > a {
-    color: #EEE;
-}
-
 .card-btn.edit:hover {
     background-color: transparent;
-}
-
-.card-btn.edit:hover > a {
     color: #115384;
 }
 
 .card-btn.delete {
-    color: #EEE;
     background-color: #BA372A;
     border: 1px solid #BA372A;
+    height: 31px;
 }
 
 .card-btn.delete:hover {
