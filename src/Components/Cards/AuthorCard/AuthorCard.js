@@ -41,13 +41,12 @@ const AuthorCard = () => {
                         </span>
 
                         <span>
-                            <button className="card-btn edit">
-                                <Link
-                                    to={`/authors-management/edit-author/${author.id}`}
-                                >
-                                    <i className="fa fa-pencil" aria-hidden="true"></i> edit
-                                </Link>
-                            </button>
+                            <Link
+                                className="card-btn edit"
+                                to={`/authors-management/edit-author/${author.id}`}
+                            >
+                                <i className="fa fa-pencil" aria-hidden="true"></i> edit
+                            </Link>
                             {
                                 roles.find((role) => role === "Master") &&
                                 <button
