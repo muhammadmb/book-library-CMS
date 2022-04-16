@@ -15,6 +15,8 @@ import Profile from './Components/Pages/Profile/Profile';
 import ProfileLayout from './Components/Pages/Profile/ProfileLayout/ProfileLayout';
 import MyTeam from './Components/Pages/Profile/MyTeam/MyTeam';
 import RequireAuth from './Components/RequireAuth/RequireAuth';
+import GenreManagement from './Components/Pages/GenreManagement/GenreManagement';
+import AddGenre from './Components/Add Elements/AddGenre/AddGenre';
 
 function App() {
 
@@ -36,6 +38,10 @@ function App() {
             <Route path="/authors-management/edit-author/:authorId" element={<Layout> <AddAuthor /> </Layout>} />
             <Route path="/reviews-management/genre/:genreId/book/:bookId/reviews" element={<Layout> <ReviewsManagement /> </Layout>} />
             <Route path="/reviews-management/genre/:genreId/book/:bookId/reviews/:pageNumber" element={<Layout> <ReviewsManagement /> </Layout>} />
+            <Route path="/genres-management" element={<Layout> <GenreManagement /> </Layout>} />
+            <Route path="/genres-management/:pageNumber" element={<Layout> <GenreManagement /> </Layout>} />
+            <Route path="/genres-management/Add" element={<Layout> <AddGenre /> </Layout>} />
+            <Route path="/genres-management/edit-genre/:genreId" element={<Layout> <AddGenre /> </Layout>} />
             <Route path="/suggestions" element={<Layout> <SuggestionsPage /> </Layout>} />
             <Route path="/feedback" element={<Layout> <Feedback /> </Layout>} />
             <Route path="/user/information" element={<ProfileLayout> <Profile /> </ProfileLayout>} />
