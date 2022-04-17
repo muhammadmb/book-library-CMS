@@ -4,6 +4,7 @@ import books from './BooksSlice';
 import authors from './AuthorSlice';
 import reviews from './ReviewsSlice';
 import genres from './GenresSlice';
+import suggestions from './SuggestionsSlice';
 
 export default configureStore({
     middleware: (getDefaultMiddleware) =>
@@ -15,6 +16,7 @@ export default configureStore({
         books,
         authors,
         reviews,
-        genres
+        genres,
+        suggestions
     },
 });
