@@ -1,4 +1,4 @@
-.sugesstion-card {
+.suggest-card {
   background-color: #FFF;
   border-radius: 25px;
   padding: 25px;
@@ -6,66 +6,87 @@
   box-shadow: 2px 5px 10px #000;
 }
 
-.sugesstion-card .sugesstion-details {
+.suggest-card .suggest-details {
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
-.sugesstion-card .sugesstion-details div {
-  width: 100%;
+.suggest-card .suggest-details div {
+  width: 50%;
+  display: flex;
+  align-items: center;
 }
 
-.sugesstion-card .sg-lable {
+.suggest-card .sg-lable {
   line-height: 1.8;
   font-size: 19px;
   color: #2c3531;
 }
 
-.sugesstion-card .lable {
+.suggest-card .sg-img {
+  width: 20px;
+  height: 30px;
+  object-fit: cover;
+}
+
+.suggest-card .lable {
   color: #2c3531;
 }
 
-.sugesstion-card .addition input:not([type="submit"]),
-.sugesstion-card .addition textarea {
+.suggest-card .addition input:not([type="submit"]),
+.suggest-card .addition textarea {
   background-color: #bebebe93;
   color: #011d10;
 }
 
-.sugesstion-card .sugesstion {
+.suggest-card .suggest {
   font-weight: 800;
   color: #58af98;
 }
 
-.sugesstion-card button {
+.control-btn {
+  display: table;
+  margin: 20px auto 0;
+}
+
+.suggest-card button {
   outline: none;
-  padding: 5px;
+  padding: 5px 15px;
   border: none;
   cursor: pointer;
-  min-width: 8%;
-  margin: 5px 10px 5px 0;
+  margin: 0 10px;
   border-radius: 5px;
 }
 
-.sugesstion-card .add {
+.suggest-card .add {
   background-color: #28682b;
   color: #eee;
 }
 
-.sugesstion-card .add:hover {
+.suggest-card .add:hover {
   background-color: #1a4d1d;
 }
 
-.sugesstion-card .delete {
+.suggest-card .delete {
   background-color: #a12114;
   color: #eee;
 }
 
-.sugesstion-card .delete:hover {
+.suggest-card .delete:hover {
   background-color: #68150c;
 }
 
+.close-btn {
+  position: relative;
+  background-color: #e91e63;
+  border-radius: 50%;
+  color: #FFF;
+  left: calc(100% - 50px);
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 500px) {
-  .sugesstion-card .sugesstion-details {
+  .suggest-card .suggest-details {
     flex-direction: column;
   }
 }
