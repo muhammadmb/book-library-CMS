@@ -1,101 +1,88 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import MuiAlert from '@material-ui/lab/Alert';
 import './SuggestionsPageStyle.css';
 import SugesstionCard from '../../SugesstionCard/SugesstionCard';
+import { useDispatch, useSelector } from 'react-redux';
+import { getSuggestions } from '../../../Store/SuggestionsSlice';
+import { useNavigate, useParams } from 'react-router-dom';
 
 function SuggestionsPage() {
 
-    const [Data, setData] = useState([
-        {
-            id: 0,
-            "BookTitle": "book1",
-            "BookCover": "https://example.com",
-            "Publisher": "x",
-            "DateOfPublish": new Date(2022, 0, 10),
-            "Pages": "520",
-            "Genre": "x",
-            "Author": "x",
-            "Description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis facilis aut similique accusamus, voluptate ratione. Omnis aliquam architecto totam officiis distinctio maxime aspernatur voluptas debitis vitae, eum hic sapiente assumenda!"
-        },
-        {
-            id: 1,
-            "BookTitle": "book2",
-            "BookCover": "https://example.com",
-            "Publisher": "x",
-            "DateOfPublish": new Date(2022, 0, 10),
-            "Pages": "520",
-            "Genre": "x",
-            "Author": "x",
-            "Description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis facilis aut similique accusamus, voluptate ratione. Omnis aliquam architecto totam officiis distinctio maxime aspernatur voluptas debitis vitae, eum hic sapiente assumenda!"
-        },
-        {
-            id: 2,
-            "BookTitle": "book3",
-            "BookCover": "https://example.com",
-            "Publisher": "x",
-            "DateOfPublish": new Date(2022, 0, 10),
-            "Pages": "520",
-            "Genre": "x",
-            "Author": "x",
-            "Description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis facilis aut similique accusamus, voluptate ratione. Omnis aliquam architecto totam officiis distinctio maxime aspernatur voluptas debitis vitae, eum hic sapiente assumenda!"
-        },
-        {
-            id: 3,
-            "BookTitle": "book4",
-            "BookCover": "https://example.com",
-            "Publisher": "x",
-            "DateOfPublish": new Date(2022, 0, 10),
-            "Pages": "520",
-            "Genre": "x",
-            "Author": "x",
-            "Description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis facilis aut similique accusamus, voluptate ratione. Omnis aliquam architecto totam officiis distinctio maxime aspernatur voluptas debitis vitae, eum hic sapiente assumenda!"
-        },
-        {
-            id: 4,
-            "BookTitle": "book5",
-            "BookCover": "https://example.com",
-            "Publisher": "x",
-            "DateOfPublish": new Date(2022, 0, 10),
-            "Pages": "520",
-            "Genre": "x",
-            "Author": "x",
-            "Description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis facilis aut similique accusamus, voluptate ratione. Omnis aliquam architecto totam officiis distinctio maxime aspernatur voluptas debitis vitae, eum hic sapiente assumenda!"
-        }
-    ]);
+    const { pageNumber } = useParams();
+    const { suggestions, headers, suggestionLoading, status } = useSelector((state) => state.suggestions);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const [hasNext, setHasNext] = useState();
+    const [hasPrevious, setHasPrevious] = useState();
+    const [totalPages, setTotalPages] = useState();
 
-    const HandelDelete = (id) => {
-        setData(Data.filter(d => d.id !== id));
-    }
+    useEffect(() => {
+        if (headers) {
+            setHasNext(JSON.parse(headers["x-pagination"])?.hasNext);
+            setHasPrevious(JSON.parse(headers["x-pagination"])?.hasPrevious);
+            setTotalPages(JSON.parse(headers["x-pagination"])?.totalPages);
+        }
+    }, [headers, pageNumber]);
+
+    useEffect(() => {
+        dispatch(getSuggestions({
+            pageNumber: pageNumber ? pageNumber : 1,
+            numberOfBookPagesize: 5
+        }))
+    }, [dispatch, pageNumber]);
+
+    useEffect(() => {
+        if (suggestionLoading === false && suggestions.length === 0 && headers && Number.parseInt(pageNumber) > 1) {
+            navigate(`/suggestions/${Number.parseInt(pageNumber ? pageNumber : 1) - 1}`);
+        }
+
+        if (pageNumber > totalPages && pageNumber > 1) {
+            navigate(`/suggestions/${Number.parseInt(totalPages)}`);
+        }
+    }, [suggestions]);
 
     return (
         <div className="page-container">
+
             {
-                Data.length === 0 ? <MuiAlert severity="success">You have no Suggestions Now!</MuiAlert> : null
+                suggestions.length === 0 &&
+                suggestionLoading === false &&
+                status === 200 &&
+                <MuiAlert severity="success">You have no Suggestions Now!</MuiAlert>
             }
 
             {
-                Data.map(s => (
+                suggestions.length !== 0 &&
+                suggestionLoading === false &&
+                suggestions.map((suggest) => (
                     <SugesstionCard
-                        key={s.id}
-                        id={s.id}
-                        BookTitle={s.BookTitle}
-                        BookCover={s.BookCover}
-                        Publisher={s.Publisher}
-                        Pages={s.Pages}
-                        Author={s.Author}
-                        DateOfPublish={s.DateOfPublish}
-                        Description={s.Description}
-                        Genre={s.Genre}
-                        HandelDelete={(id) => HandelDelete(id)}
+                        key={suggest.id}
+                        suggest={suggest}
                     />
                 ))
             }
 
+            {
+                suggestions.length !== 0 &&
+                <div className='nav-buttons'>
+                    <button
+                        className='nav-btn previous'
+                        onClick={() => navigate(`/suggestions/${Number.parseInt(pageNumber ? pageNumber : 1) - 1}`)}
+                        disabled={!hasPrevious}
+                    >
+                        Previous
+                    </button>
 
-
+                    <button
+                        className='nav-btn next'
+                        onClick={() => navigate(`/suggestions/${Number.parseInt(pageNumber ? pageNumber : 1) + 1}`)}
+                        disabled={!hasNext}
+                    >
+                        Next
+                    </button>
+                </div>
+            }
         </div>
-
-
     )
 }
 
