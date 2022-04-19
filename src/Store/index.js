@@ -5,6 +5,7 @@ import authors from './AuthorSlice';
 import reviews from './ReviewsSlice';
 import genres from './GenresSlice';
 import suggestions from './SuggestionsSlice';
+import feedbacks from './FeedbackSlice';
 
 export default configureStore({
     middleware: (getDefaultMiddleware) =>
@@ -17,6 +18,7 @@ export default configureStore({
         authors,
         reviews,
         genres,
-        suggestions
+        suggestions,
+        feedbacks
     },
 });
