@@ -1,73 +1,85 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import FeedbackCard from '../../FeedbackCard/FeedbackCard';
 import MuiAlert from '@material-ui/lab/Alert';
 import './FeedbackStyle.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { getFeedbacks } from '../../../Store/FeedbackSlice';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const Feedback = () => {
 
-    const [Data, setData] = useState([
-        {
-            id: 0,
-            "email": "ABC@Example.com",
-            "read": false,
-            "date": new Date(),
-            "details": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque excepturi dolor illo recusandae, molestiae, pariatur quibusdam maxime non expedita numquam omnis incidunt accusamus veritatis. Consequatur sequi deserunt quasi vitae voluptatem."
-        },
-        {
-            id: 1,
-            "email": "XYZ@Example.com",
-            "read": false,
-            "date": new Date(),
-            "details": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque excepturi dolor illo recusandae, molestiae, pariatur quibusdam maxime non expedita numquam omnis incidunt accusamus veritatis. Consequatur sequi deserunt quasi vitae voluptatem."
-        },
-        {
-            id: 2,
-            "email": "QWE@Example.com",
-            "read": false,
-            "date": new Date(2022, 2, 27),
-            "details": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque excepturi dolor illo recusandae, molestiae, pariatur quibusdam maxime non expedita numquam omnis incidunt accusamus veritatis. Consequatur sequi deserunt quasi vitae voluptatem."
-        },
-        {
-            id: 3,
-            "email": "TYT@Example.com",
-            "read": true,
-            "date": new Date(2022, 0, 21),
-            "details": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque excepturi dolor illo recusandae, molestiae, pariatur quibusdam maxime non expedita numquam omnis incidunt accusamus veritatis. Consequatur sequi deserunt quasi vitae voluptatem. Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque excepturi dolor illo recusandae, molestiae, pariatur quibusdam maxime non expedita numquam omnis incidunt accusamus veritatis. Consequatur sequi deserunt quasi vitae voluptatem. Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque excepturi dolor illo recusandae, molestiae, pariatur quibusdam maxime non expedita numquam omnis incidunt accusamus veritatis. Consequatur sequi deserunt quasi vitae voluptatem. Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque excepturi dolor illo recusandae, molestiae, pariatur quibusdam maxime non expedita numquam omnis incidunt accusamus veritatis. Consequatur sequi deserunt quasi vitae voluptatem."
-        }
-    ]);
+    const { pageNumber } = useParams();
+    const { feedbacks, headers, feedbackLoading, status } = useSelector((state) => state.feedbacks);
+    const [hasNext, setHasNext] = useState();
+    const [hasPrevious, setHasPrevious] = useState();
+    const [totalPages, setTotalPages] = useState();
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
-    const handelDelete = (id) => {
-        setData(Data.filter(s => s.id !== id));
-    }
-
-    const handelRead = (id, read) => {
-        if (!parseInt(id) >= Data.length) {
-            Data[parseInt(id)].read = read;
-        } else {
-            Data[0].read = read;
+    useEffect(() => {
+        if (headers) {
+            setHasNext(JSON.parse(headers["x-pagination"])?.hasNext);
+            setHasPrevious(JSON.parse(headers["x-pagination"])?.hasPrevious);
+            setTotalPages(JSON.parse(headers["x-pagination"])?.totalPages);
         }
-    }
+    }, [headers, pageNumber]);
+
+    useEffect(() => {
+        if (feedbackLoading === false && feedbacks.length === 0 && headers && Number.parseInt(pageNumber) > 1) {
+            navigate(`/feedback/${Number.parseInt(pageNumber ? pageNumber : 1) - 1}`);
+        }
+
+        if (pageNumber > totalPages && pageNumber > 1) {
+            navigate(`/feedback/${Number.parseInt(totalPages)}`);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [feedbacks]);
+
+    useEffect(() => {
+        dispatch(getFeedbacks({
+            pageNumber: pageNumber ? pageNumber : 1,
+            pageSize: 10
+        }))
+    }, [dispatch, pageNumber]);
 
     return (
         <div className='page-container'>
             {
-                Data.length === 0 ? <MuiAlert severity="success">You have no Feedback Now!</MuiAlert> : null
+                feedbacks.length === 0 &&
+                feedbackLoading === false &&
+                status === 200 &&
+                <MuiAlert severity="success">You have no Feedback Now!</MuiAlert>
+
             }
 
             {
-                Data.map((s) => (
-                    <div key={s.id}>
-                        <FeedbackCard
-                            email={s.email}
-                            details={s.details}
-                            id={s.id}
-                            read={s.read}
-                            date={s.date}
-                            handelDelete={(id) => handelDelete(id)}
-                            handelRead={(id, read) => handelRead(id, read)}
-                        />
-                    </div>
+                feedbacks.map(feedback => (
+                    <FeedbackCard
+                        key={feedback.id}
+                        feedback={feedback}
+                    />
                 ))
+            }
+
+            {
+                feedbacks.length !== 0 &&
+                <div className='nav-buttons'>
+                    <button
+                        className='nav-btn previous'
+                        onClick={() => navigate(`/feedback/${Number.parseInt(pageNumber ? pageNumber : 1) - 1}`)}
+                        disabled={!hasPrevious}
+                    >
+                        Previous
+                    </button>
+
+                    <button
+                        className='nav-btn next'
+                        onClick={() => navigate(`/feedback/${Number.parseInt(pageNumber ? pageNumber : 1) + 1}`)}
+                        disabled={!hasNext}
+                    >
+                        Next
+                    </button>
+                </div>
             }
 
         </div>
