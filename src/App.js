@@ -44,6 +44,7 @@ function App() {
             <Route path="/genres-management/edit-genre/:genreId" element={<Layout> <AddGenre /> </Layout>} />
             <Route path="/suggestions" element={<Layout> <SuggestionsPage /> </Layout>} />
             <Route path="/feedback" element={<Layout> <Feedback /> </Layout>} />
+            <Route path="/feedback/:pageNumber" element={<Layout> <Feedback /> </Layout>} />
             <Route path="/user/information" element={<ProfileLayout> <Profile /> </ProfileLayout>} />
             <Route path="/user/my-team" element={<ProfileLayout> <MyTeam /> </ProfileLayout>} />
           </Route>
