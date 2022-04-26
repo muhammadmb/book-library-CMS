@@ -16,4 +16,14 @@ const RequireAuth = () => {
     );
 }
 
+export const RoleAuth = () => {
+    const { roles } = useSelector((state) => state.auth);
+    const location = useLocation();
+    return (
+        roles.includes("Master") ?
+            <Outlet />
+            : <Navigate to="user/information" state={{ from: location }} replace />
+    )
+}
+
 export default RequireAuth;

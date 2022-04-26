@@ -14,7 +14,7 @@ import AddAuthor from './Components/Add Elements/AddAuthor/AddAuthor';
 import Profile from './Components/Pages/Profile/Profile';
 import ProfileLayout from './Components/Pages/Profile/ProfileLayout/ProfileLayout';
 import MyTeam from './Components/Pages/Profile/MyTeam/MyTeam';
-import RequireAuth from './Components/RequireAuth/RequireAuth';
+import RequireAuth, { RoleAuth } from './Components/RequireAuth/RequireAuth';
 import GenreManagement from './Components/Pages/GenreManagement/GenreManagement';
 import AddGenre from './Components/Add Elements/AddGenre/AddGenre';
 
@@ -46,7 +46,9 @@ function App() {
             <Route path="/feedback" element={<Layout> <Feedback /> </Layout>} />
             <Route path="/feedback/:pageNumber" element={<Layout> <Feedback /> </Layout>} />
             <Route path="/user/information" element={<ProfileLayout> <Profile /> </ProfileLayout>} />
-            <Route path="/user/my-team" element={<ProfileLayout> <MyTeam /> </ProfileLayout>} />
+            <Route element={<RoleAuth />}>
+              <Route path="/user/my-team" element={<ProfileLayout> <MyTeam /> </ProfileLayout>} />
+            </Route>
           </Route>
 
           <Route path="/sign-in" element={<SignIn />} />
