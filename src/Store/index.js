@@ -7,6 +7,8 @@ import genres from './GenresSlice';
 import suggestions from './SuggestionsSlice';
 import feedbacks from './FeedbackSlice';
 import profile from './ProfileSlice';
+import users from './UsersSlice';
+import roles from './RolesSlice';
 
 export default configureStore({
     middleware: (getDefaultMiddleware) =>
@@ -21,6 +23,8 @@ export default configureStore({
         genres,
         suggestions,
         feedbacks,
-        profile
+        profile,
+        users,
+        roles
     },
 });
