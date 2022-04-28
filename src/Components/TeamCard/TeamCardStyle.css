@@ -9,32 +9,33 @@
     margin: 2% 0;
 }
 
-.team-card-container > div:not(:nth-child(2)) {
+.team-card-container>div:not(:nth-child(2)) {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
 }
 
-.team-card-container > div .main-details {
+.team-card-container>div .main-details {
     display: flex;
     position: relative;
 }
 
-.team-card-container > div .main-details img {
+.team-card-container>div .main-details img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
+    object-fit: cover;
 }
 
-.team-card-container > div .main-details div {
+.team-card-container>div .main-details div {
     padding: 0 15px;
 }
 
-.team-card-container > div .main-details div span {
+.team-card-container>div .main-details div span {
     color: #878585;
 }
 
-.team-card-container > div i {
+.team-card-container>div i {
     padding: 0 0 15px 15px;
     color: #00A89B;
     cursor: pointer;
@@ -73,9 +74,10 @@
     cursor: pointer;
 }
 
-.drop-down li:hover {
+.drop-down li:hover,
+.selected {
     color: #00A89B;
-} 
+}
 
 @media (max-width: 778px) {
 
@@ -84,7 +86,7 @@
         padding: 25px 20px 5px 15px;
     }
 
-    .team-card-container > div i {
+    .team-card-container>div i {
         padding: 0;
     }
 }
