@@ -86,7 +86,7 @@ const ProfileSlice = createSlice({
     extraReducers: {
         [getProfile.pending]: (state, action) => {
             state.profileLoading = true;
-            state.errors = false;
+            state.errors = null;
         },
         [getProfile.fulfilled]: (state, action) => {
             state.profile = action.payload.data;
