@@ -18,6 +18,10 @@
     padding: 25px 20px 5px;
 }
 
+.my-team-container .balls-container .ball {
+    background-color: #731414;
+}
+
 .my-team-container .team-cards {
     padding: 15px;
     display: flex;
