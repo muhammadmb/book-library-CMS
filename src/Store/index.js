@@ -9,6 +9,7 @@ import feedbacks from './FeedbackSlice';
 import profile from './ProfileSlice';
 import users from './UsersSlice';
 import roles from './RolesSlice';
+import statistics from './StatisticsSlice'
 
 export default configureStore({
     middleware: (getDefaultMiddleware) =>
@@ -25,6 +26,7 @@ export default configureStore({
         feedbacks,
         profile,
         users,
-        roles
+        roles,
+        statistics
     },
 });
