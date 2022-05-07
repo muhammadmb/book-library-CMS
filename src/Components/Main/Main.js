@@ -1,8 +1,19 @@
-import React from 'react';
-import Charts from '../Charts/Charts';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getBookStatistics, getStatistics } from '../../Store/StatisticsSlice';
+import Chart from '../Chart/Chart';
 import './MainStyle.css';
 
 const Main = () => {
+
+    const dispatch = useDispatch();
+    const { statistics } = useSelector((state) => state.statistics);
+
+    useEffect(() => {
+        dispatch(getStatistics());
+        dispatch(getBookStatistics());
+    }, [dispatch]);
+
     return (
         <main>
             <div className="main-container">
@@ -25,7 +36,7 @@ const Main = () => {
                             <p className="text-primary-p">
                                 books
                             </p>
-                            <span className="font-bold text-title">4710</span>
+                            <span className="font-bold text-title">{statistics.books}</span>
                         </div>
                     </div>
 
@@ -38,7 +49,7 @@ const Main = () => {
                             <p className="text-primary-p">
                                 reviews
                             </p>
-                            <span className="font-bold text-title">578</span>
+                            <span className="font-bold text-title">{statistics.reviews}</span>
                         </div>
                     </div>
 
@@ -51,70 +62,52 @@ const Main = () => {
                             <p className="text-primary-p">
                                 Authors
                             </p>
-                            <span className="font-bold text-title">578</span>
+                            <span className="font-bold text-title">{statistics.authors}</span>
                         </div>
                     </div>
 
                     <div className="card">
                         <i
-                            className="fa fa-rocket fa-2x text-red"
+                            className="fa fa-list-ul fa-2x text-red"
                             aria-hidden="true"
                         ></i>
                         <div className="card-inner">
                             <p className="text-primary-p">
-                                subscribers
+                                genres
                             </p>
-                            <span className="font-bold text-title">7451</span>
+                            <span className="font-bold text-title">{statistics.genres}</span>
                         </div>
                     </div>
 
-                </div>
-
-                <div className="charts">
-
-                    <div className="charts-left">
-                        <div className="charts-left-title">
-                            <div>
-                                <h1>Daily reports</h1>
-                            </div>
-                            <i className="fa fa-eye" aria-hidden="true"></i>
+                    <div className="card">
+                        <i
+                            className="fa fa-comments fa-2x text-lightblue"
+                            aria-hidden="true"
+                        ></i>
+                        <div className="card-inner">
+                            <p className="text-primary-p">
+                                feedbacks
+                            </p>
+                            <span className="font-bold text-title">{statistics.feedbacks}</span>
                         </div>
-                        <Charts />
                     </div>
 
-                    <div className="charts-right">
-                        <div className="charts-right-title">
-                            <div>
-                                <h1>Books States</h1>
-                            </div>
-                            <i className="fa fa-list" aria-hidden="true"></i>
-                        </div>
-
-                        <div className="charts-right-cards">
-                            <div className="card1">
-                                <h1>New</h1>
-                                <p>555</p>
-                            </div>
-
-                            <div className="card2">
-                                <h1>Wating</h1>
-                                <p>22</p>
-                            </div>
-
-                            <div className="card3">
-                                <h1>E-Books</h1>
-                                <p>750</p>
-                            </div>
-
-                            <div className="card4">
-                                <h1>orders</h1>
-                                <p>450</p>
-                            </div>
-
+                    <div className="card">
+                        <i
+                            className="fa fa-question fa-2x text-red"
+                            aria-hidden="true"
+                        ></i>
+                        <div className="card-inner">
+                            <p className="text-primary-p">
+                                suggestions
+                            </p>
+                            <span className="font-bold text-title">{statistics.suggestions}</span>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <Chart />
         </main>
     )
 }

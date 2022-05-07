@@ -1,38 +1,38 @@
-main{
+main {
     background: #f3f4f6;
     grid-area: main;
     overflow-y: auto;
 }
 
-.main-container{
+.main-container {
     padding: 20px 35px;
 }
 
-.main-title{
+.main-title {
     display: flex;
     align-items: center;
 }
 
-.main-greeting > h1{
+.main-greeting>h1 {
     font-size: 24px;
     color: #2e4a66;
     margin-bottom: 5px;
 }
 
-.main-greeting > p{
+.main-greeting>p {
     font-size: 14px;
     font-weight: 700;
     color: #a5aaad;
 }
 
-.main-cards{
+.main-cards {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 30px;
     margin: 20px 0;
 }
 
-.card{
+.card {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -43,119 +43,29 @@ main{
     box-shadow: 5px 5px 13px #ededed, -5px -5px 13px #fff;
 }
 
-.card-inner{
+.card-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-top: 14px;
 }
 
-.card-inner > span{
+.card-inner p {
+    text-transform: capitalize;
+}
+
+.card-inner>span {
     font-size: 25px;
 }
 
-.charts{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    margin-top: 50px;
-}
-
-.charts-left,
-.charts-right{
-    padding: 25px;
-    border-radius: 5px;
-    background: #FFF;
-    box-shadow: 5px 5px 13px #ededed, -5px -5px 13px #fff;
-}
-
-.charts-left-title,
-.charts-right-title{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.charts-left-title > div > h1,
-.charts-right-title > div > h1{
-    font-size: 24px;
-    color: #2e4a55;
-    margin-bottom: 5px;
-}
-
-.charts-left-title > i,
-.charts-right-title > i{
-    color: #FFF;
-    font-size: 20px;
-    border-radius: 5px;
-    padding: 15px;
-    border: none;
-}
-
-.charts-left-title > i{
-    background: #ffc100;
-}
-
-.charts-right-title > i{
-    background: #39447a;
-    border-radius: 200px 0px 200px 200px;
-}
-
-.charts-right-cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-top: 30px;
-}
-
-.card1, .card2, .card3, .card4{
-    text-align: center;
-    padding: 25px;
-    border-radius: 5px;
-    font-size: 14px;
-}
-
-.card1{
-    background: #d1ecf1;
-    color: #35a4ba;
-}
-
-.card2{
-    background: #d2f9ee;
-    color: #38e1b0;
-}
-
-.card3{
-    background: #d6d6d6;
-    color: #3a3e41;
-}
-
-.card4{
-    background: #fddcdf;
-    color: #f65a6f;
-}
-
 @media only screen and (max-width: 885px) {
-    .main-container{
+    .main-container {
         padding: 20px;
     }
 
-    .main-cards{
+    .main-cards {
         grid-template-columns: 1fr;
         gap: 10px;
         margin-bottom: 0;
     }
-
-    .charts{
-        grid-template-columns: 1fr;
-    }
-
-    .charts-left,
-    .charts-right{
-        padding: 10px;
-        border-radius: 5px;
-        background: #FFF;
-        box-shadow: 5px 5px 13px #ededed, -5px -5px 13px #fff;
-    }
-
 }
