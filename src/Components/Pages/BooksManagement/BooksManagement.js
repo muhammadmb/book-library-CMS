@@ -6,6 +6,7 @@ import './BooksManagementStyle.css';
 import { useDispatch, useSelector } from 'react-redux';
 import BookLoading from '../../../Loading/BookLoading/BookLoading';
 import { useNavigate, useParams } from 'react-router-dom';
+import '../ManagementsPagesStyle.css';
 
 const BooksManagement = () => {
 
@@ -14,6 +15,7 @@ const BooksManagement = () => {
     const [hasNext, setHasNext] = useState();
     const [hasPrevious, setHasPrevious] = useState();
     const [searchQuery, setSearchQuery] = useState([]);
+    const [totalPages, setTotalPages] = useState();
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -21,14 +23,26 @@ const BooksManagement = () => {
         if (headers) {
             setHasNext(JSON.parse(headers["x-pagination"])?.hasNext);
             setHasPrevious(JSON.parse(headers["x-pagination"])?.hasPrevious);
+            setTotalPages(JSON.parse(headers["x-pagination"])?.totalPages);
         }
     }, [headers, pageNumber]);
+
+    useEffect(() => {
+        if (booksLoading === false && books.length === 0 && headers && Number.parseInt(pageNumber) > 1) {
+            navigate(`/books-management/${Number.parseInt(pageNumber ? pageNumber : 1) - 1}`);
+        }
+
+        if (pageNumber > totalPages && pageNumber > 1) {
+            navigate(`/books-management/${Number.parseInt(totalPages)}`);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [books]);
 
     useEffect(() => {
         dispatch(getBooks({
             fields: "id,genre,bookTitle,bookCover,publisher, addedDate, updateDate, author",
             searchQuery,
-            pageNumber,
+            pageNumber: pageNumber ? pageNumber : 1,
             pageSize: 10
         }));
     }, [dispatch, searchQuery, pageNumber]);
@@ -63,11 +77,12 @@ const BooksManagement = () => {
             {
                 books.length !== 0 &&
                 booksLoading === false &&
-                <div className="books-container">
+                <div className="tb-header-5">
                     <span>book title</span>
                     <span>genre</span>
                     <span>added date</span>
                     <span>update Date</span>
+                    <span>reviews</span>
                     <span>actions</span>
                 </div>
             }
