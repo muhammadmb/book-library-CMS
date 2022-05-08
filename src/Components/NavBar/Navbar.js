@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import { Link, NavLink } from 'react-router-dom';
 import './NavbarStyle.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProfile } from '../../Store/ProfileSlice';
 
 function Navbar({ openSidebar }) {
+
+    const { profile } = useSelector((state) => state.profile);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getProfile());
+    }, [dispatch]);
+
     return (
         <nav className="navbar">
             <div className="nav-icon" onClick={() => openSidebar()}>
@@ -18,7 +28,7 @@ function Navbar({ openSidebar }) {
 
             <div className="navbar-right">
                 <Link to="/user/information">
-                    <Avatar>H</Avatar>
+                    <Avatar src={profile.pictureUrl} />
                 </Link>
             </div>
 
