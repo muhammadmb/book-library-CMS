@@ -3,13 +3,12 @@ import "./FeedbackCardStyle.css";
 import LocalPostOfficeIcon from "@material-ui/icons/LocalPostOffice";
 import DraftsIcon from "@material-ui/icons/Drafts";
 import CloseIcon from "@material-ui/icons/Close";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { deleteFeedback, editFeedback } from "../../Store/FeedbackSlice";
 
 const FeedbackCard = ({ feedback }) => {
   const [readed, setReaded] = useState(feedback.isReaded);
   const [readMore, setReadMore] = useState(feedback.description?.length < 150);
-  const { feedbacks } = useSelector((state) => state.feedbacks);
   const isNew = (((new Date()).getTime() - new Date(feedback.addedDate).getTime()) / (1000 * 3600 * 24) < 7);
   const dispatch = useDispatch();
 

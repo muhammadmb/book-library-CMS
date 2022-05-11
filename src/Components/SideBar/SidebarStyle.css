@@ -16,18 +16,18 @@
   margin-bottom: 30px;
 }
 
-.sidebar-title > h1 {
+.sidebar-title>h1 {
   font-size: 20px;
   display: inline;
 }
 
-.sidebar-title > i {
+.sidebar-title>i {
   font-size: 18px;
   margin: 0 10px;
   display: none;
 }
 
-.sidebar-menu > h2 {
+.sidebar-menu>h2 {
   color: #116466;
   font-size: 18px;
   margin: 25px 0 15px;
@@ -50,7 +50,7 @@
   transition: all 0.5 ease-in-out;
 }
 
-.sidebar-link > .link {
+.sidebar-link>.link {
   text-decoration: none;
   color: #eee;
   font-weight: 700;
@@ -68,15 +68,15 @@
   cursor: pointer;
 }
 
-.sidebar-logout > .link {
+.sidebar-logout>.link {
   text-decoration: none;
   color: #e65061;
   font-weight: 700;
   text-transform: uppercase;
 }
 
-@media only screen and (max-width: 978px) {
-  
+@media only screen and (max-width: 1090px) {
+
   .sidebar {
     position: fixed;
     margin: 0 0 0 -105%;
@@ -89,9 +89,9 @@
     margin: 0;
     z-index: 9999;
     left: 0;
-    position: absolute;
   }
-  .sidebar-title > i {
+
+  .sidebar-title>i {
     display: inline;
     cursor: pointer;
   }

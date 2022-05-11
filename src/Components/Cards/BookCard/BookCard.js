@@ -22,7 +22,7 @@ const BookCard = () => {
         <div className='cards'>
             {
                 books.map((book) => (
-                    <div className='card-content-5' key={book.id}>
+                    <div className='card-content-6' key={book.id}>
                         <span>
                             <span>
                                 <img className='card-img' src={book.bookCover} alt={book.bookTitle} />
@@ -42,13 +42,13 @@ const BookCard = () => {
                                 </span>
                             </span>
                         </span>
-                        <span>
+                        <span title='Genre'>
                             {book.genre?.genreName}
                         </span>
-                        <span>
+                        <span title='Add Date'>
                             {book.addedDate?.substring(0, 10)}
                         </span>
-                        <span>
+                        <span title='Update Date'>
                             {book.updateDate?.substring(0, 4) === "0001" ? "No update" : book.updateDate?.substring(0, 10)}
                         </span>
 
@@ -59,7 +59,7 @@ const BookCard = () => {
                             <i className="fa fa-comments" aria-hidden="true"></i> reviews
                         </Link>
 
-                        <span>
+                        <span className='modification-btn'>
                             <Link
                                 className="card-btn edit"
                                 to={`/books-management/edit-book/genre/${book.genre?.id}/book/${book.id}`}

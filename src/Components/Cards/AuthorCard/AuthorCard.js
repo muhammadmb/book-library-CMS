@@ -19,7 +19,7 @@ const AuthorCard = () => {
         <div className='cards'>
             {
                 authors.map((author) => (
-                    <div className='card-content' key={author.id}>
+                    <div className='card-content-5' key={author.id}>
                         <span>
                             <span>
                                 <img className='card-img' src={author.pictureUrl} alt={author.name} />
@@ -30,17 +30,17 @@ const AuthorCard = () => {
                                 </a>
                             </span>
                         </span>
-                        <span>
+                        <span title='Genre'>
                             {author.genre?.genreName}
                         </span>
-                        <span>
+                        <span title='Add Date'>
                             {author.addedDate?.substring(0, 10)}
                         </span>
-                        <span>
+                        <span title='Update Date'>
                             {author.updateDate?.substring(0, 4) === "0001" ? "No update" : author.updateDate?.substring(0, 10)}
                         </span>
 
-                        <span>
+                        <span className='modification-btn'>
                             <Link
                                 className="card-btn edit"
                                 to={`/authors-management/edit-author/${author.id}`}

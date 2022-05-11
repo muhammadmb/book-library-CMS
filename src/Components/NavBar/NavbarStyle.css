@@ -9,16 +9,16 @@
     border-bottom: 1px solid lightgray;
 }
 
-.navbar .nav-icon{
+.navbar .nav-icon {
     display: none;
 }
 
-.navbar .nav-icon > i{
+.navbar .nav-icon>i {
     font-size: 26px;
     color: #a5aaad;
 }
 
-.navbar .navbar-left > a{
+.navbar .navbar-left>a {
     margin-right: 30px;
     text-decoration: none;
     color: #a5aaad;
@@ -26,24 +26,24 @@
     font-weight: 700;
 }
 
-.navbar .navbar-left .active-link{
+.navbar .navbar-left .active-link {
     color: #265acc;
     border-bottom: 3px solid #265acc;
     padding-bottom: 12px;
 }
 
-.navbar .navbar-right{
+.navbar .navbar-right {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.navbar .navbar-right > a{
+.navbar .navbar-right>a {
     margin-left: 20px;
     text-decoration: none;
 }
 
-.navbar .navbar-right > a > i{
+.navbar .navbar-right>a>i {
     color: #265acc;
     font-size: 16px;
     border-radius: 50px;
@@ -52,18 +52,19 @@
     padding: 7px;
 }
 
-@media only screen and (max-width: 978px){
+@media only screen and (max-width: 1090px) {
     .navbar .nav-icon {
         display: inline;
         cursor: pointer;
     }
-    .navbar .navbar-left > a{
+
+    .navbar .navbar-left>a {
         font-size: 13px;
     }
 }
 
-@media only screen and (max-width: 480px){
-    .navbar-left{
+@media only screen and (max-width: 480px) {
+    .navbar-left {
         display: none;
     }
 }

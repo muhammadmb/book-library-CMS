@@ -42,6 +42,7 @@ const GenreManagement = () => {
         if (pageNumber > totalPages && pageNumber > 1) {
             navigate(`/genres-management/${Number.parseInt(totalPages)}`);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [genres]);
 
     const searchData = (data) => {
@@ -85,8 +86,8 @@ const GenreManagement = () => {
                     genreLoading === false &&
                     <div className="tb-header-4">
                         <span>Genre</span>
-                        <span>added date</span>
-                        <span>update Date</span>
+                        <span>add</span>
+                        <span>update</span>
                         <span>actions</span>
                     </div>
                 }

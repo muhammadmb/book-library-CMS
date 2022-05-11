@@ -9,12 +9,11 @@
 .suggest-card .suggest-details {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row;
 }
 
 .suggest-card .suggest-details div {
   width: 50%;
-  display: flex;
-  align-items: center;
 }
 
 .suggest-card .sg-lable {
@@ -88,5 +87,11 @@
 @media only screen and (max-width: 500px) {
   .suggest-card .suggest-details {
     flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 885px) {
+  .suggest-card .suggest-details div {
+    width: 100%;
   }
 }

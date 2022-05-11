@@ -2,7 +2,7 @@
     grid-area: sidebar;
     overflow-y: auto;
     padding: 15% 20px;
-    background-color:#F5F5F5 ;
+    background-color: #F5F5F5;
 }
 
 .sidebar-pr .close-icon {
@@ -20,7 +20,7 @@
     color: #686868;
 }
 
-.sidebar-link-pr:last-child .link{
+.sidebar-link-pr:last-child .link {
     color: red;
     cursor: pointer;
 }
@@ -35,25 +35,25 @@
 }
 
 
-@media only screen and (max-width: 978px) {
-    
+@media only screen and (max-width: 1090px) {
+
     .closed {
         margin: 0 0 0 -97%;
         transition: all 1s ease-in-out;
     }
-    
+
     .sidebar-pr {
-      position: fixed;
-      transition: all 1s ease-in-out;
-      width: 100%;
-      height: 100%;
-      background-color: #00A89B;
-      padding: 0px 10px 0 0;
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      justify-content: center;
-      z-index: 1;
+        position: fixed;
+        transition: all 1s ease-in-out;
+        width: 100%;
+        height: 100%;
+        background-color: #00A89B;
+        padding: 0px 10px 0 0;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        z-index: 1;
     }
 
     .sidebar-pr .close-icon {
@@ -86,7 +86,7 @@
     }
 
     .sidebar-pr .close-icon {
-        top: 3%;;
+        top: 3%;
     }
 
     .sidebar-pr .open-icon {

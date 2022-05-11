@@ -77,11 +77,11 @@ const BooksManagement = () => {
             {
                 books.length !== 0 &&
                 booksLoading === false &&
-                <div className="tb-header-5">
+                <div className="tb-header-6">
                     <span>book title</span>
                     <span>genre</span>
-                    <span>added date</span>
-                    <span>update Date</span>
+                    <span>add</span>
+                    <span>update</span>
                     <span>reviews</span>
                     <span>actions</span>
                 </div>

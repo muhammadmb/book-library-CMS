@@ -32,13 +32,13 @@ const GenreCard = () => {
                                 </a>
                             </span>
                         </span>
-                        <span>
+                        <span title='Add Date'>
                             {genre.addedDate?.substring(0, 10)}
                         </span>
-                        <span>
+                        <span title='Update Date'>
                             {genre.updateDate?.substring(0, 4) === "0001" ? "No update" : genre.updateDate?.substring(0, 10)}
                         </span>
-                        <span>
+                        <span className='modification-btn'>
                             <Link
                                 className="card-btn edit"
                                 to={`/genres-management/edit-genre/${genre.id}`}
