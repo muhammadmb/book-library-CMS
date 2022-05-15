@@ -1,14 +1,15 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { logout } from '../../../../Store/AuthSlice';
 import './ProfileSidebarStyle.css';
 
 const ProfileSidebar = ({ sidebarOpen, closeSidebar, openSidebar }) => {
 
+    const { roles } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const handelLogout = () => {
+    const handleLogout = () => {
         dispatch(logout());
         closeSidebar();
         navigate("/sign-in");
@@ -38,42 +39,31 @@ const ProfileSidebar = ({ sidebarOpen, closeSidebar, openSidebar }) => {
 
             <div className='sidebar-link-pr'>
                 <NavLink
-                    className="link"
-                    activeClassName="active-side-link"
+                    className={({ isActive }) => isActive ? "link active-side-link" : "link"}
                     to="/user/information"
                     onClick={() => closeSidebar()}
                 >
                     <i className="fa fa-info-circle"></i> Information
                 </NavLink>
             </div>
-
-            <div className='sidebar-link-pr'>
-                <NavLink
-                    className="link"
-                    activeClassName="active-side-link"
-                    to="/user/my-team"
-                    onClick={() => closeSidebar()}
-                >
-                    <i className="fa fa-user" aria-hidden="true"></i> My Team
-                </NavLink>
-            </div>
-
-            <div className='sidebar-link-pr'>
-                <NavLink
-                    className="link"
-                    activeClassName="active-side-link"
-                    to="/user/history"
-                    onClick={() => closeSidebar()}
-                >
-                    <i className="fa fa-history" aria-hidden="true"></i> History
-                </NavLink>
-            </div>
+            {
+                roles.includes("Master") &&
+                <div className='sidebar-link-pr'>
+                    <NavLink
+                        className={({ isActive }) => isActive ? "link active-side-link" : "link"}
+                        to="/user/my-team"
+                        onClick={() => closeSidebar()}
+                    >
+                        <i className="fa fa-user" aria-hidden="true"></i> My Team
+                    </NavLink>
+                </div>
+            }
 
             <div className='sidebar-link-pr'>
                 <span
                     className="link"
                     to="/sign-in"
-                    onClick={handelLogout}
+                    onClick={handleLogout}
                 >
                     <i className="fa fa-sign-out" aria-hidden="true"></i> Sign out
                 </span>
