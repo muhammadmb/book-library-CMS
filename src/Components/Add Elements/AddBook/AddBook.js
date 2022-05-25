@@ -10,22 +10,27 @@ import { useDispatch, useSelector } from 'react-redux';
 import { editBook, insertBook } from '../../../Store/BooksSlice';
 import LoadingAnimation from '../../../Loading/LoadingAnimation/LoadingAnimation';
 import Alert from '@material-ui/lab/Alert';
+import { deleteSuggestion } from '../../../Store/SuggestionsSlice';
 
-const AddBook = (props) => {
+const AddBook = ({ bookData }) => {
 
-    const [book, setBook] = useState({
-        bookTitle: "",
-        bookCover: "",
-        publisher: "",
-        dateOfPublish: "",
-        numberOfBookPages: "",
-        genreId: "",
-        authorId: "",
-        description: "",
-        id: "",
-        genre: {},
-        author: {}
-    });
+    const [book, setBook] = useState(
+        bookData ?
+            bookData
+            :
+            {
+                bookTitle: "",
+                bookCover: "",
+                publisher: "",
+                dateOfPublish: "",
+                numberOfBookPages: "",
+                genreId: "",
+                authorId: "",
+                description: "",
+                id: "",
+                genre: {},
+                author: {}
+            });
 
     const tages = [
         "science",
@@ -68,7 +73,17 @@ const AddBook = (props) => {
         if (edit) {
             getbooks();
         }
-    }, [genreId, bookId, edit]);
+
+        if (bookData) {
+            setBook(book => ({
+                ...book,
+                genreId: book?.genre?.id,
+                authorId: book?.author?.id
+            }))
+            setGenreValue(bookData?.genre?.genreName);
+            setAuthorValue(bookData?.author?.name);
+        }
+    }, [genreId, bookId, edit, bookData]);
 
     const handleGenreChange = async (value) => {
         const genreSearch = await axios.get(`${API_URL}/Genres?fields=id,genreName&SearchQuery=${value}`);
@@ -91,7 +106,10 @@ const AddBook = (props) => {
         if (edit) {
             dispatch(editBook(book));
         } else {
-            dispatch(insertBook(book));
+            dispatch(insertBook(book)).then(
+                bookData &&
+                dispatch(deleteSuggestion(bookData.id))
+            );
         }
         if (errors === "" || errors === null) {
             setSuccessAlert(true);
@@ -107,13 +125,16 @@ const AddBook = (props) => {
             setSelectedTags([...selectedTags, tag]);
     };
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const DebouncedGenreChange = useCallback(Debounce(handleGenreChange), []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const DebouncedAuthorChange = useCallback(Debounce(handleAuthorChange), []);
 
     return (
         <>
             {
                 bookProccess &&
+                !bookData &&
                 <div className='submit-change'>
                     <LoadingAnimation />
                 </div>
@@ -121,7 +142,7 @@ const AddBook = (props) => {
             <div className="page-container addition">
 
                 <h2>
-                    {props.header}
+                    {/* {props.header} */}
                 </h2>
 
                 <form onSubmit={handleSubmit}>
@@ -314,7 +335,7 @@ const AddBook = (props) => {
                             required
                         />
                     </div>
-                    <input className="submit-btn" type="submit" value="Save" />
+                    <input className="submit-btn" type="submit" value="Save" disabled={bookProccess} />
 
                 </form>
 
